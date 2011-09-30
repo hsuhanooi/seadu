@@ -1,0 +1,4 @@
+ul#rooms { list-style:none; }
+ul#rooms th { text-align: right; padding-right: 32px; }
+
+ul#rooms form { margin-top: 8px; }

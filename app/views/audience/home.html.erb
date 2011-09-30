@@ -1,0 +1,29 @@
+<script type="text/javascript">
+	var onPageReady = function () {		
+		CONTEXT.setVar('roomName', '<%= @room_name %>');
+		CONTEXT.setVar('juggernaut', new Juggernaut);
+		CONTEXT.setVar('joinRoomUrl', '<%= join_room_url %>');
+		CONTEXT.setVar('submitMoodUrl', '<%= submit_mood_url %>');
+
+		CONTEXT.setElement('pollChoices', $('ul#poll-choices li'));
+		CONTEXT.setElement('console', $('#console'));
+
+		AUDIENCE.initOnPageReady();
+	};
+
+	$(document).ready(onPageReady);
+</script>
+
+<h1>Audience Home</h1>
+
+<div><strong>Mood Example</strong></div>
+<ul id="poll-choices">
+	<% ['Fast','Slow','Interested','Bored'].each do |choice| %>
+		<li data-choice="<%= choice %>"><%= choice.upcase %></li>
+	<% end %>
+</ul>
+
+<div><strong>Console</strong></div>
+<ul id="console">
+	
+</ul>
