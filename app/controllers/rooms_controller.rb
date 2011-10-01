@@ -1,10 +1,15 @@
 class RoomsController < ApplicationController
+
+  def index
+    @rooms = Room.all
+  end
   
   def new
     @room = Room.new
   end
   
   def create
+    require_params :room
     @room = Room.new(params[:room])
     
     if @room.valid?
@@ -15,6 +20,11 @@ class RoomsController < ApplicationController
   end
   
   def show
+    @room = Room.find params[:id]
+  end
+  
+  def admin
+    @room = Room.find params[:id]
   end
   
 end
