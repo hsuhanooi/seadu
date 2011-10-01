@@ -25,9 +25,14 @@ class QuestionsController < ApplicationController
   end
   
   def create
+    require_params :question
     @question = Question.new(params[:question])
-    
     flash[:notice] = "Comment successfully created" if @question.save
-    respond_with(@question, :layout => false) if request.xhr?
+    
+    if request.xhr?
+      respond_with(@question, :layout => false) 
+    else
+      redirect_to students_view_url(params[:question][:room_id])
+    end
   end
 end
