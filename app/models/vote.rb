@@ -3,6 +3,6 @@ class Vote < ActiveRecord::Base
   
   VOTE_TYPES = ['up']
   
-  validates :room_id, presence: true
+  validates :question_id, presence: true
   validates :vote_type, inclusion: {in: VOTE_TYPES}
 end

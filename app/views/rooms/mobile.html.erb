@@ -1,6 +1,6 @@
-<%- content_for(:head) do %>
-  <%= stylesheet_link_tag "mobile" %>
-<%- end %>
+<% content_for(:head) do %>
+<%= stylesheet_link_tag "mobile" %>
+<% end %>
 
 <div id="mobile_container">
   <div id="mobile_header">
@@ -10,15 +10,15 @@
 
     <div id="vibes">
       <div class="vibe">
-        <div class="vibe_button btn primary">Zzz</div>
+        <div class="vibe_button btn">Zzz</div>
         <div class="vibe_title">bored</div>
       </div>
       <div class="vibe">
-        <div class="vibe_button btn primary">:)</div>
+        <div class="vibe_button btn info">:)</div>
         <div class="vibe_title">good</div>
       </div>
       <div class="vibe">
-        <div class="vibe_button btn primary">?</div>
+        <div class="vibe_button btn danger">?</div>
         <div class="vibe_title">confused</div>
       </div>
     </div>
@@ -26,9 +26,14 @@
 
   <div id="ask_a_question">
     <div class="section_title">
-      Ask a question
+      Ask a question (141 chars max)
     </div>
-    <textarea id="question_field"></textarea>
+    <div id="ask_container">
+      <%= form_tag url_for(:controller => :question, :action => :create) do %>
+        <div id="ask_content"><%= text_area_tag :"question[content]", nil, :maxlength => 141 %></div>
+        <div id="ask_submit"><%= submit_tag :send %></div>
+      <% end %>
+    </div>
   </div>
 
   <div id="other_questions">
@@ -37,26 +42,36 @@
     </div>
 
     <div id="questions">
-      <%- @questions.each do |q| %>
+      <% @questions.each do |q| %>
+
         <div class="question">
-          <div class="question_header">
-            <div class="question_content">
-              <%= q.content %>
+          
+          <%= form_tag url_for(:controller => :votes, :action => :create) do %>
+            <div class="question_body">
+              <div class="question_info">
+                <span class="question_votes">
+                  <%= pluralize(q.votes_count, "vote") %>
+                </span>
+                <span class="question_time">
+                  <%= time_ago_in_words(q.created_at) %> ago
+                </span>
+              </div>
+              <div class="question_content">
+                <%= q.content %>
+              </div>
             </div>
-            <div class="question_votes">
-              <%= q.votes_count %>
+
+            <div class="question_vote">
+              <%= hidden_field_tag :"vote[question_id]", q.id %>
+              <%= hidden_field_tag :"vote[vote_type]", "up" %>
+              <%= submit_tag :vote %>
             </div>
-          </div>
-          <div class="question_footer">
-            <div class="question_time">
-              <%= time_ago_in_words(q.created_at) %> ago
-            </div>
-            <div class="question_vote btn success">
-              Vote up
-            </div>
-          </div>
-        </div>
-      <%- end %>
+        <% end %>
+        
+      </div>
+
+      <% end %>
     </div>
+
   </div>
 </div>
