@@ -17,4 +17,9 @@ class ApplicationController < ActionController::Base
       render :json => {:status => "error"}
     end
   end
+  
+  def mobile?
+    return true if Rails.env == "development" && params[:mobile]
+    request.user_agent =~ /Mobile|webOS/
+  end
 end

@@ -1,0 +1,62 @@
+<%- content_for(:head) do %>
+  <%= stylesheet_link_tag "mobile" %>
+<%- end %>
+
+<div id="mobile_container">
+  <div id="mobile_header">
+    <div id="room_name">
+      <%= @room.name %>
+    </div>
+
+    <div id="vibes">
+      <div class="vibe">
+        <div class="vibe_button btn primary">Zzz</div>
+        <div class="vibe_title">bored</div>
+      </div>
+      <div class="vibe">
+        <div class="vibe_button btn primary">:)</div>
+        <div class="vibe_title">good</div>
+      </div>
+      <div class="vibe">
+        <div class="vibe_button btn primary">?</div>
+        <div class="vibe_title">confused</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="ask_a_question">
+    <div class="section_title">
+      Ask a question
+    </div>
+    <textarea id="question_field"></textarea>
+  </div>
+
+  <div id="other_questions">
+    <div class="section_title">
+      Other Questions
+    </div>
+
+    <div id="questions">
+      <%- @questions.each do |q| %>
+        <div class="question">
+          <div class="question_header">
+            <div class="question_content">
+              <%= q.content %>
+            </div>
+            <div class="question_votes">
+              <%= q.votes_count %>
+            </div>
+          </div>
+          <div class="question_footer">
+            <div class="question_time">
+              <%= time_ago_in_words(q.created_at) %> ago
+            </div>
+            <div class="question_vote btn success">
+              Vote up
+            </div>
+          </div>
+        </div>
+      <%- end %>
+    </div>
+  </div>
+</div>
