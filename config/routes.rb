@@ -9,6 +9,8 @@ Seadu::Application.routes.draw do
   
   match 'teachers/view/:room_id' => 'teachers#view', :as => :teachers_view
   match 'students/view/:room_id' => 'students#view', :as => :students_view
+  
+  match 'sms' => 'sms#sms', :as => :sms
 
 # The priority is based upon order of creation:
 # first created -> highest priority.
