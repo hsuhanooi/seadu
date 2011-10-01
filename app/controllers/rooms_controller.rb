@@ -14,10 +14,14 @@ class RoomsController < ApplicationController
     
     if @room.valid?
       @room.save
-      redirect_to :action => :show, :id => @room.id
+      redirect_to :controller => :teachers, :action => :show, :id => @room.id
     else
       render :action => :new
     end
+  end
+  
+  def list
+    @rooms = Room.find(:all)
   end
   
   def show
