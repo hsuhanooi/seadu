@@ -14,7 +14,7 @@
 ActiveRecord::Schema.define(:version => 20111001060119) do
 
   create_table "questions", :force => true do |t|
-    t.integer  "status_key"
+    t.integer  "status"
     t.integer  "room_id"
     t.string   "content"
     t.datetime "created_at"
@@ -34,15 +34,15 @@ ActiveRecord::Schema.define(:version => 20111001060119) do
     t.string "email"
   end
 
-  create_table "vibe", :force => true do |t|
-    t.integer  "type_key"
+  create_table "vibes", :force => true do |t|
+    t.integer  "vibe_type"
     t.integer  "room_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "votes", :force => true do |t|
-    t.integer  "type_key"
+    t.integer  "vote_type"
     t.integer  "question_id"
     t.datetime "created_at"
     t.datetime "updated_at"

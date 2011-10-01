@@ -1,5 +1,4 @@
 class RoomsController < ApplicationController
-
   def index
     @rooms = Room.all
   end
@@ -9,12 +8,11 @@ class RoomsController < ApplicationController
   end
   
   def create
-    require_params :room
     @room = Room.new(params[:room])
     
     if @room.valid?
       @room.save
-      redirect_to :controller => :teachers, :action => :show, :id => @room.id
+      redirect_to teachers_view_url(@room.id)
     else
       render :action => :new
     end

@@ -3,6 +3,12 @@ Seadu::Application.routes.draw do
   root :to => "homepage#index"
   
   resources :rooms
+  resources :vibes
+  match 'vibes/create/:room_id/:vibe_type' => 'vibes#create', :as => :create_vibe
+  resources :questions
+  
+  match 'teachers/view/:room_id' => 'teachers#view', :as => :teachers_view
+  match 'students/view/:room_id' => 'students#view', :as => :students_view
 
 # The priority is based upon order of creation:
 # first created -> highest priority.
