@@ -24,7 +24,8 @@ class RoomsController < ApplicationController
 
   def show
     @room = Room.find(params[:id])
-    @questions = @room.questions
+    @questions = @room.questions.highest_rated
+    @mr_questions = @room.questions.most_recent
     @question = Question.new(room: @room)
     
     if mobile?

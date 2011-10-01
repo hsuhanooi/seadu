@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   
   private
   
-  def require_params *keys
+  def require_params(*keys)
     missing = keys.reject{|k| params.keys.include? k}
     unless missing.empty?
       raise "Missing following params: #{missing.join(',')}" 
