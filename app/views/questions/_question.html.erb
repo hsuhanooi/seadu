@@ -4,7 +4,7 @@
     <div class="question_body">
       <div class="question_info">
         <span class="question_votes">
-          <%= pluralize(question.votes_count, "vote") %>
+          <%= pluralize(question.votes.count, "vote") %>
         </span>
         <span class="question_time">
           <%= time_ago_in_words(question.created_at) %> ago
