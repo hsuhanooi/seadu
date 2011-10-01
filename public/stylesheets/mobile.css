@@ -1,0 +1,87 @@
+/* line 3, ../../app/assets/stylesheets/mobile.sass */
+#mobile_container {
+  margin: 10px 20px;
+}
+/* line 6, ../../app/assets/stylesheets/mobile.sass */
+#mobile_container .section_title {
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+/* line 10, ../../app/assets/stylesheets/mobile.sass */
+#mobile_header {
+  border-bottom: 1px solid #cccccc;
+  padding: 20px 0;
+}
+/* line 14, ../../app/assets/stylesheets/mobile.sass */
+#mobile_header #room_name {
+  font-weight: bold;
+  text-align: center;
+}
+
+/* line 18, ../../app/assets/stylesheets/mobile.sass */
+#vibes {
+  overflow: hidden;
+}
+/* line 21, ../../app/assets/stylesheets/mobile.sass */
+#vibes .vibe {
+  float: left;
+  width: 33%;
+  text-align: center;
+}
+/* line 26, ../../app/assets/stylesheets/mobile.sass */
+#vibes .vibe .vibe_button {
+  margin: 10px 20px;
+}
+
+/* line 29, ../../app/assets/stylesheets/mobile.sass */
+#ask_a_question {
+  padding: 20px 0;
+  width: 100%;
+}
+/* line 33, ../../app/assets/stylesheets/mobile.sass */
+#ask_a_question #question_field {
+  padding: 4px 0;
+  width: 100%;
+}
+
+/* line 39, ../../app/assets/stylesheets/mobile.sass */
+#other_questions #questions .question {
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -o-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -khtml-border-radius: 3px;
+  border-radius: 3px;
+  border: 1px solid #cccccc;
+  padding: 10px 20px;
+}
+/* line 44, ../../app/assets/stylesheets/mobile.sass */
+#other_questions #questions .question .question_header, #other_questions #questions .question .question_footer {
+  overflow: hidden;
+}
+/* line 47, ../../app/assets/stylesheets/mobile.sass */
+#other_questions #questions .question .question_header {
+  position: relative;
+}
+/* line 50, ../../app/assets/stylesheets/mobile.sass */
+#other_questions #questions .question .question_header .question_content {
+  margin-right: 100px;
+}
+/* line 53, ../../app/assets/stylesheets/mobile.sass */
+#other_questions #questions .question .question_header .question_votes {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 75px;
+  text-align: right;
+}
+/* line 61, ../../app/assets/stylesheets/mobile.sass */
+#other_questions #questions .question .question_footer .question_time {
+  color: gray;
+  float: left;
+}
+/* line 65, ../../app/assets/stylesheets/mobile.sass */
+#other_questions #questions .question .question_footer .question_vote {
+  float: right;
+}

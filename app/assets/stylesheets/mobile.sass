@@ -1,4 +1,4 @@
-// @import "compass"
+@import "layout"
 
 #mobile_container
   margin: 10px 20px
@@ -8,7 +8,7 @@
     margin: 10px 0
 
 #mobile_header
-  border-bottom: 1px solid gray
+  border-bottom: 1px solid $light-gray
   padding: 20px 0
   
   #room_name
@@ -34,11 +34,11 @@
     padding: 4px 0
     width: 100%
     
-    
 #other_questions
   #questions
     .question
-      border: 1px solid gray
+      +border-radius(3px)
+      border: 1px solid $light-gray
       padding: 10px 20px
       
       .question_header, .question_footer
