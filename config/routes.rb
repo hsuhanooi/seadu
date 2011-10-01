@@ -1,27 +1,8 @@
 Seadu::Application.routes.draw do
 
   root :to => "homepage#index"
-
-  #############
-  # AUDIENCE
-  #############
-
-  match "/" => "audience#home", :as => :audience_home
-  match "audience/join-room" => "audience#join_room", :as => :join_room
-  match "audience/submit-mood" => "audience#submit_mood", :as => :submit_mood
-
-  #############
-  # SPEAKER
-  #############
   
-  
-
-  #############
-  # ROOM
-  #############
-
-  match "rooms" => "room#rooms", :as => :rooms
-  match "room-push" => "room#push", :as => :room_push
+  resources :rooms
 
 # The priority is based upon order of creation:
 # first created -> highest priority.
