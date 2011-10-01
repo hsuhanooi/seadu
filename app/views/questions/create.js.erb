@@ -1,0 +1,18 @@
+var el = $('#question_form');
+<% if @question.errors.any? %>
+  // Create a list of errors
+  var list = $(document.createElement('ul'));
+  
+  <% @question.errors.full_messages.each do |error| %>
+    list.prepend("<li><%= escape_javascript(error) %></li>");
+  <% end %>
+  // Display errors on form
+  el.find('.errors').html(list);
+<% else %>  
+  $('#question_list').prepend("<%= escape_javascript( 
+      render :partial => 'questions/question', :object => @question
+    ) %>");
+  // Clear form
+  el.find('input:text,textarea').val('');
+  el.find('#errors').empty();
+<% end %>
