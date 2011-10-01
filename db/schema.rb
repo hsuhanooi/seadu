@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111001060119) do
+ActiveRecord::Schema.define(:version => 20111001231926) do
 
   create_table "questions", :force => true do |t|
     t.string   "status"
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(:version => 20111001060119) do
   end
 
   create_table "vibes", :force => true do |t|
-    t.integer  "vibe_type"
+    t.string   "vibe_type"
     t.integer  "room_id"
     t.datetime "created_at"
     t.datetime "updated_at"
