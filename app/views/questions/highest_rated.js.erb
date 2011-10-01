@@ -1,0 +1,6 @@
+$('#questions').html("<%= escape_javascript( 
+    render :partial => 'questions/questions', :locals => {:questions => @questions}
+  ) %>");
+// Clear form
+el.find('input:text,textarea').val('');
+el.find('#errors').empty();
