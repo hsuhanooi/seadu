@@ -6,6 +6,7 @@ Seadu::Application.routes.draw do
   resources :vibes
   match 'vibes/create/:room_id/:vibe_type' => 'vibes#create', :as => :create_vibe
   resources :questions
+  resources :votes
   
   match 'teachers/view/:room_id' => 'teachers#view', :as => :teachers_view
   match 'students/view/:room_id' => 'students#view', :as => :students_view
