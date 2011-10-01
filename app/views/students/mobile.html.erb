@@ -1,0 +1,27 @@
+<% content_for(:head) do %>
+  <%= stylesheet_link_tag "mobile" %>
+<% end %>
+
+<div id="mobile_container">
+  <div id="mobile_header">
+    <div id="room_name">
+      <%= @room.id %>:
+      <%= @room.name %>
+    </div>
+    
+    <%= render :partial => "vibes/buttons", :locals => {:room => @room} %>
+  </div>
+
+  <%= render :partial => "questions/ask" %>
+
+  <div id="other_questions">
+    <div class="section_title">
+      Other Questions
+    </div>
+
+    <div id="questions">
+      <%= render :partial => "questions/question", :collection => @questions %>
+    </div>
+
+  </div>
+</div>

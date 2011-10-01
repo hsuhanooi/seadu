@@ -6,6 +6,9 @@ Seadu::Application.routes.draw do
   resources :vibes
   match 'vibes/create/:room_id/:vibe_type' => 'vibes#create', :as => :create_vibe
   resources :questions
+  resources :votes
+  match 'questions/most_recent' => 'questions#most_recent', :as => 'most_recent_questions'
+  match 'questions/highest_rated' => 'questions#highest_rated', :as => 'highest_rated_questions'
   
   match 'teachers/view/:room_id' => 'teachers#view', :as => :teachers_view
   match 'students/view/:room_id' => 'students#view', :as => :students_view

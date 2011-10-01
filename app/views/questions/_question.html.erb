@@ -1,1 +1,25 @@
-<li><%= question.content %></li>
+<div class="question">
+  
+  <%= form_tag url_for(:controller => :votes, :action => :create) do %>
+    <div class="question_body">
+      <div class="question_info">
+        <span class="question_votes">
+          <%= pluralize(question.votes_count, "vote") %>
+        </span>
+        <span class="question_time">
+          <%= time_ago_in_words(question.created_at) %> ago
+        </span>
+      </div>
+      <div class="question_content">
+        <%= question.content %>
+      </div>
+    </div>
+
+    <div class="question_vote">
+      <%= hidden_field_tag :"vote[question_id]", question.id %>
+      <%= hidden_field_tag :"vote[vote_type]", "up" %>
+      <%= submit_tag :vote %>
+    </div>
+  <% end %>
+
+</div>
