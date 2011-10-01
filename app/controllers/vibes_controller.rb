@@ -1,8 +1,7 @@
 class VibesController < ApplicationController
   def create
-    room_id = params[:room_id]
+    room_id   = params[:id]
     vibe_type = params[:vibe_type]
-    
     @vibe = Vibe.new(:room_id => room_id, :vibe_type => vibe_type)
     
     if @vibe.valid?

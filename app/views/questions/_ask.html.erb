@@ -1,0 +1,11 @@
+<div id="ask_a_question">
+  <div class="section_title">
+    Ask a question (141 chars max)
+  </div>
+  <div id="ask_container">
+    <%= form_tag questions_url, :method => :post do %>
+      <div id="ask_content"><%= text_area_tag :"question[content]", nil, :maxlength => 141 %></div>
+      <div id="ask_submit"><%= submit_tag :send %></div>
+    <% end %>
+  </div>
+</div>
