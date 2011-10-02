@@ -20,7 +20,6 @@ class InTheBeginning < ActiveRecord::Migration
       t.integer :question_threshold
       t.integer :teacher_id
       t.timestamps
-      t.timestamp :ended_at
     end
     
     create_table :teachers do |t|
