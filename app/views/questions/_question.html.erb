@@ -7,6 +7,8 @@
       <% end %>
     </div>
 
+	<%= link_to "X", hide_question_url(), :remote => true %>
+
     <div class="question_vote_num">
       <%= question.votes.count %>
     </div>
