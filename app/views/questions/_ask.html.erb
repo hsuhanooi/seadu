@@ -5,10 +5,11 @@
     Ask a question (141 chars max)
   </div>
   <div id="ask_container">
-    <%= form_tag questions_url, :method => :post do %>
-      <%= hidden_field_tag :"question[room_id]", room.id %>
-      <div id="ask_content"><%= text_area_tag :"question[content]", nil, :maxlength => 141 %></div>
-      <div id="ask_submit"><%= submit_tag "Submit", :class => "primary btn" %></div>
+    <%= form_for(@question, remote: true, html: {id: 'question_form'}) do |f| %>
+      <div class="errors"></div>
+      <%= f.hidden_field(:room_id)%>
+      <div id="ask_content"><%= f.text_area(:content, :maxlength => 141) %></div>
+      <div id="ask_submit"><%= f.submit(:ask, :class => "primary btn") %></div>
     <% end %>
   </div>
 </div>

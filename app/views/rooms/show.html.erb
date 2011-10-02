@@ -1,12 +1,4 @@
 <div id="room" data-id="<%= @room.id %>">
   <h1><%= @room.name %></h1>
-  <div>
-    <div>
-      <%= link_to(:highest_rated, highest_rated_questions_path(room_id: @room.id), :remote => true) %> | 
-      <%= link_to(:most_recent, most_recent_questions_path(room_id: @room.id), :remote => true) %>    
-    </div>
-
-    <%= render 'questions/form' %>
-    <%= render :partial => 'questions/questions', :locals => {:questions => @questions} %>
-  </div>
+  <%= render :partial => "questions/widget" %>
 </div>

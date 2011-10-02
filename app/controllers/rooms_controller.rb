@@ -32,7 +32,7 @@ class RoomsController < ApplicationController
     @sort_order = 'highest_rated'
     
     if mobile?
-      render :template => "rooms/mobile"
+      render :template => "students/mobile"
     end
   end
   
