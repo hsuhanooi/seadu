@@ -24,13 +24,16 @@ class Vibe < ActiveRecord::Base
     if !chart_data.empty?
       started_at = room.created_at
       ended_at = room.ended_at
-      ['bored', 'confused', 'good'].each{|v|
+      last_time = ended_at - started_at
+      ['bored', 'good'].each{|v|
         vibes = chart_data.select{|s| s.vibe_type == v}
         str << "{\n"
         str << "name: '#{v}',\n"
-        data = []
+        data = ["{ x: 0, y: null}", "{ x: #{last_time}, y: null}"]
         vibes.each{|point|
-          data << "{ name: '#{point.created_at.strftime("%H:%M")}', y: #{point.room_id || "null"}}"
+          if point.created_at
+            data << "{ x: #{point.created_at - room.created_at}, y: #{point.room_id || "null"}}"
+          end
         }
         str << "data: [#{data.join(', ')}]\n"
         str << "},\n"

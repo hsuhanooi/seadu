@@ -7,6 +7,12 @@ class VibesController < ApplicationController
     room.mock
     redirect_to :action => :chart, :room_id => room_id
   end
+
+  def chart_data
+    room_id = params[:room_id]
+    @room = Room.find(room_id)
+    render :text => Vibe.chart_series(@room.id)
+  end
   
   def chart
     room_id = params[:room_id]
@@ -18,7 +24,7 @@ class VibesController < ApplicationController
     vibe_type = params[:vibe_type]
     @vibe = Vibe.new(:room_id => room_id, :vibe_type => vibe_type)
     
-    if @vibe.save!
+    if @vibe.save
       respond_to do |format|
         format.html { redirect_to students_view_url(room_id) }
         format.js { render :text => "Added vibe successfully" }
