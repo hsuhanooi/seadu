@@ -1,0 +1,68 @@
+<%= javascript_include_tag 'highcharts' %>
+<%= Vibe.chart_series(@room.id) %>
+<br>
+LISTENERS: <%= @room.num_listeners %>
+<br>
+<%= link_to "Randomize", randomize_chart_url(@room.id) %>
+<br>
+<%= link_to "Bored", create_vibe_url(:room_id => @room.id, :vibe_type => :bored), :remote => true %>
+<br>
+<%= link_to "Good", create_vibe_url(:room_id => @room.id, :vibe_type => :good), :remote => true %>
+<br>
+<%= link_to "Confused", create_vibe_url(:room_id => @room.id, :vibe_type => :confused), :remote => true %>
+
+
+<script type="text/javascript">
+  var chart1; // globally available
+  $(document).ready(function() {
+    chart1 = new Highcharts.Chart({
+      chart: {
+        renderTo: 'chart-container-1',
+        defaultSeriesType: 'area'
+      },
+      title: {
+        text: 'Vibe Chart'
+      },
+      yAxis: {
+        title: {
+          text: '# of Vibes'
+        }
+      },
+      xAxis: {
+        title: {
+          text: 'Time (Mins from Start)'
+        }
+      },
+      series: [<%= Vibe.chart_series(@room.id) %>],
+      plotOptions: {
+	    area: {
+	      stacking: 'normal',
+	      lineColor: '#666666',
+	      lineWidth: 1,
+	      marker: {
+	        lineWidth: 1,
+	        lineColor: '#666666'
+	      }
+	    }
+	  }
+    });
+  });
+</script>
+
+<script type="text/javascript">
+ window.onload = setupRefresh;
+ function setupRefresh()
+ {
+   setInterval("refreshBlock();",5000);
+ }
+
+ function refreshBlock()
+ {
+	$.get('<%= vibes_chart_data_url(@room.id) %>', function(data) {
+	  chart1.series = data;
+	  console.log(chart1.series)
+	});
+ }
+ </script>
+
+<div id="chart-container-1" style="width: 100%; height: 400px"></div>

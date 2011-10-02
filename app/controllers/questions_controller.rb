@@ -8,21 +8,20 @@ class QuestionsController < ApplicationController
   
   def highest_rated
     @questions = Question.where(room_id: params[:room_id]).highest_rated.page(params[:page])
-    
+    @page = params[:page]
     respond_with(@questions)
   end
   
   def most_recent
     @questions = Question.where(room_id: params[:room_id]).most_recent.page(params[:page])
     @page = params[:page]
-     
     respond_with(@questions)
   end
 
   def newly_created
     @questions = Question.where(room_id: params[:room_id]).where('created_at > ?', params[:after]).most_recent.page(params[:page])
     @page = params[:page]
-  
+    
     respond_with(@questions)
   end
   
