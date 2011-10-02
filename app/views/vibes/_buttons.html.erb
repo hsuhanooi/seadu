@@ -2,23 +2,29 @@
 
 <div id="vibes">
   <div class="vibe">
-    <%= link_to create_vibe_url(:room_id => room.id, :vibe_type => :bored) do %>
-      <span class="vibe_button btn">Zzz</span>
-    <% end %>
-    <div class="vibe_title">bored</div>
+    <div class="vibe_container first">
+      <%= link_to create_vibe_url(:room_id => room.id, :vibe_type => :engaged) do %>
+        <span class="vibe_button btn info"></span>
+      <% end %>
+      <div class="vibe_title">Engaged</div>
+    </div>
   </div>
-
+  
   <div class="vibe">
-    <%= link_to create_vibe_url(:room_id => room.id, :vibe_type => :good) do %>
-      <span class="vibe_button btn info">:)</span>
-    <% end %>
-    <div class="vibe_title">good</div>
+    <div class="vibe_container">
+      <%= link_to create_vibe_url(:room_id => room.id, :vibe_type => :bored) do %>
+        <span class="vibe_button btn"></span>
+      <% end %>
+      <div class="vibe_title">Bored</div>
+    </div>
   </div>
     
   <div class="vibe">
-    <%= link_to create_vibe_url(:room_id => room.id, :vibe_type => :confused) do %>
-      <span class="vibe_button btn danger">??</span>
-    <% end %>
-    <div class="vibe_title">confused</div>
+    <div class="vibe_container">
+      <%= link_to create_vibe_url(:room_id => room.id, :vibe_type => :lost) do %>
+        <span class="vibe_button btn danger"><span>
+      <% end %>
+      <div class="vibe_title">Lost</div>
+    </div>
   </div>
 </div>

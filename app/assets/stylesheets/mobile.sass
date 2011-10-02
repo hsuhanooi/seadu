@@ -14,7 +14,7 @@ $button-width: 200px
 #mobile_container
   font-size: 40px
   line-height: 1.2
-  padding: 10px 20px 40px
+  margin: 10px 20px 40px
   
   .section_title
     font-weight: bold
@@ -25,97 +25,132 @@ $button-width: 200px
     line-height: 1.2
 
 #mobile_header
-  border-bottom: 5px solid black
-  padding-bottom: 40px
-  
-  #room_name
-    font-weight: bold
-    text-align: center
-
-#vibes
   +clearfix
-  
-  .vibe
-    +float-left
-    width: 33%
-    text-align: center
-
-    .vibe_button
-      display: block
-      height: 150px
-      margin: 20px 10px
-      
-#ask_a_question
-  padding: 20px 0
+  padding-bottom: 40px
   width: 100%
   
-  #ask_container
-    // +border-radius(3px)
-    border: 1px solid $light-gray
-    padding: 10px
-    position: relative
+  #room_name
+    +float-left
     
-    form
-      margin: 0
-    
-    #ask_content, #ask_submit
-      height: 200px
-    
-    #ask_content
-      margin-right: $button-width + 20px
-      
-      textarea
-        border: 0
-        height: 100%
-        padding: 0
-        width: 100%
-      
-    #ask_submit
-      position: absolute
-      right: 10px
-      top: 10px
-      width: $button-width
-      
-      input[type="submit"]
-        height: 100%
-        width: 100%
+  #num_listeners
+    +float-right
+    font-size: 32px
+    color: $light-gray
+
+#action_panel
+  border: 1px solid $light-gray
+
+  #vibes
+    +clearfix
+    border-bottom: 1px solid $light-gray
   
-  #question_field
-    height: 150px
-    padding: 10px 0
-    width: 100%
-    
-#other_questions
-  #questions
-    .question
-      // +border-radius(3px)
-      border: 1px solid $light-gray
-      padding: 20px
-      position: relative
+    .vibe
+      +float-left
+      width: 33%
+      text-align: center
+
+      .vibe_container
+        border-left: 1px solid $light-gray
+        margin-left: 1px
+        padding: 20px 0
+        
+        &.first
+          border-left: 0
+          margin-left: 0
+        
+        .vibe_button
+          display: block
+          height: 150px
+          margin: 0px 10px 20px
       
-      .question_body
+  #ask_a_question
+    padding: 40px 0
+    width: 100%
+  
+    .section_title
+      margin: 20px 40px
+  
+    #ask_container
+      border: 1px solid $light-gray
+      margin: 20px 40px 40px
+      padding: 10px
+      position: relative
+    
+      form
+        margin: 0
+    
+      #ask_content, #ask_submit
+        height: 100px
+    
+      #ask_content
         margin-right: $button-width + 20px
-        
-        .question_info
-          font-size: 30px
-          margin-bottom: 20px
-          
-          .question_votes
-            font-weight: bold
-          
-          .question_time
-            color: gray
-          
-        .question_content 
-          font-size: 36px
-          
-      .question_vote
-        height: 100%
+      
+        textarea
+          border: 0
+          height: 100%
+          padding: 0
+          width: 100%
+      
+      #ask_submit
         position: absolute
-        top: 0
         right: 10px
+        top: 10px
         width: $button-width
-        
+      
         input[type="submit"]
           height: 100%
           width: 100%
+  
+    #question_field
+      height: 150px
+      padding: 10px 0
+      width: 100%
+    
+#other_questions
+  margin-top: 40px
+  
+  #questions
+    list-style: none
+    margin: 0
+  
+    .question
+      border-bottom: 1px solid $light-gray
+      padding: 40px 0
+      line-height: 1.2
+      min-height: 215px
+      position: relative
+      
+      .votes_container
+        position: absolute
+        top: 40px
+        width: 100px
+        
+        .question_vote
+          form
+            margin-bottom: 0
+            
+          input[type="submit"]
+            background-image: url("/images/vote_arrow.png")
+            background-position: 28px 20px
+            background-repeat: no-repeat
+            color: transparent
+            height: 75px
+            width: 100%
+          
+        .question_vote_num
+          background-color: $light-blue
+          color: white
+          margin: 5px 0 20px
+          padding: 20px 0
+          text-align: center
+        
+        .question_vote_title
+          color: $light-gray
+          font-size: 32px
+          text-align: center
+      
+      .question_body
+        margin-left:  140px
+        
+        .question_time
+          color: $light-gray

@@ -1,22 +1,37 @@
-<div id="question_<%= question.id %>" class="question" data-time="<%= question.pg_created_at %>">
-  <div class="question_body">
-    <div class="question_info">
-      <span class="question_votes">
-        <%= pluralize(question.up_votes.count, "vote") %>
-      </span>
-      <span class="question_time">
-        <%= time_ago_in_words(question.created_at) %> ago
-      </span>
+<div id="question-<%= question.id %>" class="question" data-time="<%= question.pg_created_at %>">
+
+  <div class="votes_container">
+    <div class="question_vote">
+      <%= form_tag(question_vote_path(id: question.id), remote: true) do %>
+      <%= hidden_field_tag :vote_type, "up" %>
+      <%= submit_tag "", :class => "btn primary" %>
+      <% end %>
     </div>
+
+    <div class="question_vote_num">
+      <%= question.votes.count %>
+    </div>
+
+    <div class="question_vote_title">
+      Votes
+    </div>
+  </div>
+
+  <div class="question_body">
     <div class="question_content">
       <%= question.content %>
+    </div>
+    <div class="question_time">
+      Asked
+      <%= time_ago_in_words(question.created_at) %>
+      ago
     </div>
   </div>
 
   <div class="question_vote">
     <%= form_tag(question_vote_path(id: question.id), remote: true) do %>
-      <%= hidden_field_tag :vote_type, "up" %>
-      <%= submit_tag :vote %>
+    <%= hidden_field_tag :vote_type, "up" %>
+    <%= submit_tag :vote %>
     <% end %>
   </div>
 </div>

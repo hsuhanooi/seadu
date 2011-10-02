@@ -62,7 +62,7 @@ class Room < ActiveRecord::Base
     if rooms_visited
       rooms_visited.split(',').each{|room_id|
         if room_id.to_i == id
-          self.num_listeners = num_listeners + 1
+          self.num_listeners = (num_listeners || 0) + 1
           self.save
           return true
         end
