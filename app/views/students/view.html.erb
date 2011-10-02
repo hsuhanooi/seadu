@@ -1,19 +1,26 @@
 <% content_for(:head) do %>
+  <%= stylesheet_link_tag "vibes" %>
+  <%= stylesheet_link_tag "ask_container" %>
+  <%= stylesheet_link_tag "question" %>
   <%= stylesheet_link_tag "students" %>
 <% end %>
 
 <div id="students_view">
-  <div id="room_name">
-    <%= @room.id %>:
-    <%= @room.name %>
-    Listeners: <%= @room.num_listeners %>
+  <div id="students_header">
+    <div id="room_name">
+      <%= @room.name %>
+    </div>
+    <div id="num_listeners">
+      <%= pluralize(@room.num_listeners, "person") %>
+      in room
+    </div>
   </div>
   
   <!-- Graph stuff goes here -->
-  
-  <%= render :partial => "vibes/buttons", :locals => {:room => @room} %>
-  
-  <%= render :partial => "questions/ask", :locals => {:room => @room} %>
+  <div id="action_panel">
+    <%= render :partial => "vibes/buttons", :locals => {:room => @room} %>
+    <%= render :partial => "questions/ask", :locals => {:room => @room} %>
+  </div>
   
   <div id="other_questions">
     <%= render :partial => "questions/question", :collection => @questions %>
