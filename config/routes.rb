@@ -14,6 +14,12 @@ Seadu::Application.routes.draw do
   resources :questions
   resources :votes
   
+  match "signup" => "teachers#new", :as => "new_teachers"
+  resource :teachers
+  
+  match "login" => "teacher_sessions#new", :as => "new_teacher_sessions"
+  resource :teacher_sessions
+  
   match 'teachers/view/:room_id' => 'teachers#view', :as => :teachers_view
   match 'students/view/:room_id' => 'students#view', :as => :students_view
   

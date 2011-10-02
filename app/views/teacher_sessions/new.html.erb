@@ -1,0 +1,10 @@
+<%= form_tag teacher_sessions_url, :method => :post do %>
+
+  <%= label_tag "Email:" %>
+  <%= text_field_tag :"session[email]", nil %>
+  
+  <%= label_tag "Password:" %>
+  <%= password_field_tag :"session[password]", nil %>
+
+  <%= submit_tag "Login" %>
+<% end %>
