@@ -27,11 +27,4 @@
       ago
     </div>
   </div>
-
-  <div class="question_vote">
-    <%= form_tag(question_vote_path(id: question.id), remote: true) do %>
-    <%= hidden_field_tag :vote_type, "up" %>
-    <%= submit_tag :vote %>
-    <% end %>
-  </div>
 </div>
