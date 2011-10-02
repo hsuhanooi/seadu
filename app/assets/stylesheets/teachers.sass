@@ -12,16 +12,26 @@
 #teachers_view
   #teachers_header
     +clearfix
-    padding: 20px 0
+    padding: 20px 0 15px
 
     #room_name
       +float-left
-      font-size: 20px
-      text-transform: capitalize
+      
+      #name_field
+        font-size: 20px
+        margin-bottom: 20px
+        text-transform: capitalize
 
+      #teachers_url, #students_url
+        display: block
+      
     #num_listeners
       +float-right
       color: $light-gray
+      margin: 5px 10px 0 0
+
+    #finish_button
+      +float-right
 
   #questions
     margin-top: 10px
