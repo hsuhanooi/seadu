@@ -109,7 +109,7 @@ class Room < ActiveRecord::Base
   
   def name_is_unique
     if active? and Room.exists?(status: 'active', name: name)
-      errors.add(:name, 'a room currently exists with this name')
+      errors.add(:name, 'is currently in use')
     end
   end
 end
