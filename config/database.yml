@@ -6,8 +6,8 @@
 development:
   adapter: mysql
   host: localhost
-  username: root
   database: seadu_dev
+  username: seaduer
   pool: 5
   timeout: 5000
 
