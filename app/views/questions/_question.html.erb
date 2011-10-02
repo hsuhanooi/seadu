@@ -34,6 +34,6 @@
   </div>
   
   <% if hide_link %>
-  	<%= link_to "X", hide_question_url, :remote => true, :class => "hide_link", :onclick => "$('#question_#{question.id}').hide()" %>
+  	<%= link_to "X", hide_question_url(question.id), :remote => true, :class => "hide_link", :onclick => "$('#question_#{question.id}').hide()" %>
 	<% end %>
 </div>
