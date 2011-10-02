@@ -2,35 +2,47 @@
   var chart1; // globally available
   $(document).ready(function() {
     chart1 = new Highcharts.Chart({
+      colors: [
+        "#7FB4EA",  // blue
+        "#FDDFDE",  // pink
+        "#A9DBA9"   // green
+      ],
       chart: {
         renderTo: 'chart-container-1',
-        defaultSeriesType: 'area'
+        defaultSeriesType: 'area',
+        marginRight: 50
       },
       title: {
-        text: 'Vibe Chart'
+        text: 'Vibes'
       },
       yAxis: {
         title: {
-          text: '# of Vibes'
-        }
+          text: 'People'
+        },
+        gridLineWidth: 1,
+        lineWidth: 2,
+        lineColor: "#CCC"
       },
       xAxis: {
         title: {
-          text: 'Time (Sec from Start)'
-        }
+          text: 'Time (secs from start)'
+        },
+        gridLineWidth: 0,
+        lineWidth: 2,
+        lineColor: "#CCC"
       },
       series: [<%= Vibe.chart_series(room.id) %>],
       plotOptions: {
-	    area: {
-	      stacking: 'normal',
-	      lineColor: '#666666',
-	      lineWidth: 1,
-	      marker: {
-	        lineWidth: 1,
-	        lineColor: '#666666'
-	      }
-	    }
-	  }
+  	    area: {
+  	      stacking: 'normal',
+  	      lineColor: '#252525',
+  	      lineWidth: 1,
+  	      marker: {
+  	        lineWidth: 1,
+  	        lineColor: '#666666'
+  	      }
+  	    }
+  	  }
     });
   });
 </script>
@@ -46,10 +58,10 @@
  function refreshBlock()
  {
 	$.getJSON('<%= vibes_chart_live_url(room.id) %>', function(data) {
-    // console.log(data)
-    // console.log(data['bored'])
-    // console.log(data['confused'])
-    // console.log(chart1.series)
+		console.log(data)
+		console.log(data['Bored'])
+		console.log(data['Lost'])
+		console.log(chart1.series)
 		var series = chart1.series[0],
 		shift = series.data.length > 20; // shift if the series is longer than 20
 

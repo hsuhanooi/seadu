@@ -1,7 +1,4 @@
 class RoomsController < ApplicationController
-  def index
-    @rooms = Room.all
-  end
   
   def new
     @room = Room.new
@@ -43,13 +40,19 @@ class RoomsController < ApplicationController
     render :text => hash.to_json
   end
   
-  def finished_rooms
+  def index
     @rooms = []
     created_at = Time.now - 3600 - rand(3600)
     ended_at = created_at + 1800 + rand(3600)
     ["Bma-Pitch-SpeakerBuddi-101", "Bma-Pitch-SpeakerBuddi-102", "Bma-Pitch-SpeakerBuddi-103", "Bma-Pitch-SpeakerBuddi-104", "Bma-Pitch-SpeakerBuddi-105", "Bma-Pitch-SpeakerBuddi-106"].each{|name|
-      @rooms << Room.new(:name => "", :status => 'expired', :vibe_threshold => 15, :question_threshold => 15, :teacher_id => 1, :num_listeners => rand(100) + 50, :created_at => created_at, :updated_at => created_at, :ended_at => ended_at)
+      @rooms << Room.new(:name => name, :status => 'expired', :vibe_threshold => 15, :question_threshold => 15, :teacher_id => 1, :num_listeners => rand(100) + 50, :created_at => created_at, :updated_at => created_at, :ended_at => ended_at)
     }
+    
+    created_at = Time.now - 300
+    ended_at = Time.now
+    @rooms << Room.new(:name => "Startup-101", :status => 'expired', :vibe_threshold => 15, :question_threshold => 15, :teacher_id => 1, :num_listeners => rand(100) + 50, :created_at => created_at, :updated_at => created_at, :ended_at => ended_at)
+    
+    @rooms.sort! {|x, y| x.created_at <=> y.created_at }
   end
   
   def finish_room
@@ -61,7 +64,7 @@ class RoomsController < ApplicationController
         if saved
           # flash[:success] = "Room has been closed successfully."
           # redirect_to teachers_view_url(room.id)
-          redirect_to finished_rooms_url(room.id)
+          redirect_to finished_rooms_url
         else
           flash[:error] = "There was a problem closing your room. Please try again."
           redirect_to teachers_view_url(room.id)
