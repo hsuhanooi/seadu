@@ -50,4 +50,14 @@ class QuestionsController < ApplicationController
       redirect_to students_view_url(params[:question][:room_id])
     end
   end
+  
+  def hide_question
+    question = Question.find(params[:id])
+    question.status = 'done'
+    if question.save
+      render :text => "Successfully hid question."
+    else
+      render :text => "Failed to hide question.", :status => 400
+    end
+  end
 end

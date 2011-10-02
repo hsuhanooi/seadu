@@ -7,6 +7,7 @@ Seadu::Application.routes.draw do
   match 'vibes/create/:room_id/:vibe_type' => 'vibes#create', :as => :create_vibe
   match 'vibes/randomize_chart/:room_id' => 'vibes#randomize_chart', :as => :randomize_chart
   
+  match 'questions/hide/:id' => 'questions#hide_question', :as => 'hide_question'
   match 'questions/most_recent' => 'questions#most_recent', :as => 'most_recent_questions'
   match 'questions/highest_rated' => 'questions#highest_rated', :as => 'highest_rated_questions'
   match 'questions/newly_created' => 'questions#newly_created', :as => 'newly_created_questions'
