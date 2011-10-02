@@ -1,6 +1,32 @@
 <%= javascript_include_tag 'highcharts' %>
 
+<script type="text/javascript">
+ function refreshListeners()
+ {
+	$.getJSON('<%= poll_listeners_url(@room.id) %>', function(data) {
+      $.each($('span.listeners'), function(index, element) { 
+		var numListeners = parseInt(element.innerHTML);
+		var curListeners = parseInt(data.listeners);
+		element.innerHTML = curListeners;
+		console.log(element)
+		if (numListeners != curListeners) {
+			$(element).effect("highlight", {}, 3000);
+		}
+	  });
+	});
+ }
+ setInterval("refreshListeners();", 5000);
+</script>
+
 <h1>Room</h1>
+
+<% if flash[:success] %>
+	<p><%= flash[:success] %></p>
+<% elsif flash[:error] %>
+	<p><%= flash[:error] %></p>
+<% end %>
+
+<%= render_vibe_chart(@room) %>
 
 ID: <%= @room.id %>
 <br>
@@ -10,5 +36,10 @@ Teacher URL: <%= link_to teachers_view_url(@room.id), teachers_view_url(@room.id
 <br>
 Student URL: <%= link_to students_view_url(@room.id), students_view_url(@room.id) %>
 <br>
-Listeners: <%= @room.num_listeners %>
-<%= button_to "Finished", {:controller => "rooms", :action => "save"}, :method => :get %>
+<div class="listeners">Listeners: <span class="listeners"><%= @room.num_listeners %></span></div>
+<br>
+Status: <%= @room.finished? ? "This room has finished." : "This room is currently active." %>
+
+<% if !@room.finished? %>
+	<%= button_to "Finished", finish_room_url(@room.id) %>
+<% end %>
