@@ -2,3 +2,29 @@
   <h1><%= @room.name %></h1>
   <%= render :partial => "questions/widget" %>
 </div>
+
+<h1>Room</h1>
+
+<% if flash[:success] %>
+	<p><%= flash[:success] %></p>
+<% elsif flash[:error] %>
+	<p><%= flash[:error] %></p>
+<% end %>
+
+<%= render_vibe_chart(@room) %>
+
+ID: <%= @room.id %>
+<br>
+Name: <%= @room.name %>
+<br>
+Teacher URL: <%= link_to teachers_view_url(@room.id), teachers_view_url(@room.id) %>
+<br>
+Student URL: <%= link_to students_view_url(@room.id), students_view_url(@room.id) %>
+<br>
+<div class="listeners">Listeners: <span class="listeners"><%= @room.num_listeners %></span></div>
+<br>
+Status: <%= @room.finished? ? "This room has finished." : "This room is currently active." %>
+
+<% if !@room.finished? %>
+	<%= button_to "Finished", finish_room_url(@room.id) %>
+<% end %>

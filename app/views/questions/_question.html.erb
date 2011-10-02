@@ -1,11 +1,16 @@
+<% votes = true if !defined?(votes) || votes.nil? %>
+
 <div id="question_<%= question.id %>" class="question">
+  
   <div class="votes_container">
-    <div class="question_vote" data-count="<%= question.up_votes.count %>">
-      <%= form_tag(question_vote_path(id: question.id), remote: true) do %>
-      <%= hidden_field_tag :vote_type, "up" %>
-      <%= submit_tag "", :class => "btn primary", :onClick => "$(this).attr('disabled', 'disabled');" %>
-      <% end %>
-    </div>
+    <% if votes %>
+      <div class="question_vote" data-count="<%= question.up_votes.count %>">
+        <%= form_tag(question_vote_path(id: question.id), remote: true) do %>
+        <%= hidden_field_tag :vote_type, "up" %>
+        <%= submit_tag "", :class => "btn primary", :onClick => "$(this).attr('disabled', 'disabled');" %>
+        <% end %>
+      </div>
+    <% end %>
 
 	<%= link_to "X", hide_question_url(:id => question.id), :remote => true, :onclick => "$('question_#{question.id}').hide()" %>
 

@@ -2,6 +2,7 @@ class TeachersController < ApplicationController
   
   def view
     @room = Room.find(params[:room_id])
+    @questions = @room.questions.highest_rated
   end
 
   def create

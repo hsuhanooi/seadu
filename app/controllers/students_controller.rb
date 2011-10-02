@@ -7,6 +7,7 @@ class StudentsController < ApplicationController
     
     @questions = @room.questions.highest_rated.page(params[:page])
     @question = Question.new(room: @room)
+
     if mobile?
       render :template => "students/mobile"
     end

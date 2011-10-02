@@ -1,0 +1,62 @@
+@import "layout"
+
+=clearfix
+  overflow: hidden
+
+=float-left
+  float: left
+  
+=float-right
+  float: right
+
+#teachers_view
+  font-size: 14px
+  margin: 0 auto
+  width: 680px
+
+  input, textarea
+    font-size: 14px
+
+  #teachers_header
+    +clearfix
+    padding: 20px 0
+
+    #room_name
+      +float-left
+      font-size: 20px
+      text-transform: capitalize
+
+    #num_listeners
+      +float-right
+      color: $light-gray
+
+  #questions
+    margin-top: 20px
+
+    .question
+      line-height: 1.5
+      min-height: 80px
+      padding: 30px 0
+
+      .votes_container
+        top: 30px
+        width: 50px
+
+        .question_vote
+          input[type="submit"]
+            background-position: 4px 4px
+            height: 45px
+
+        .question_vote_num
+          font-size: 20px
+          margin: 2px 0 10px
+          padding: 8px 0
+
+        .question_vote_title
+          font-size: 14px
+
+      .question_body
+        margin-left: 75px
+
+        .question_time
+          margin-top: 10px
