@@ -1,0 +1,26 @@
+Room: <%= room.name %>
+<br>
+Start Time: <%= room.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
+<br>
+End Time: <%= room.ended_at.strftime("%Y-%m-%d %H:%M:%S") %>
+<br>
+Duration: <%= distance_of_time_in_words(room.ended_at - room.created_at) %>
+<br>
+Number of Listeners: <%= room.num_listeners %>
+<br>
+Number of Lost Listeners: <%= rand(100) %>
+<br>
+Number of Bored Listeners: <%= rand(100) %>
+<br>
+Number of Engaged Listeners: <%= rand(100) %>
+<br>
+Number of Questions: <%= rand(100) %>
+<br>
+See Questions: <%= link_to "Questions", :remote => true %>
+<br>
+See Analytics: <%= link_to "Analytics", :remote => true %>
+<br>
+<br>
+<br>
+<br>
+<br>
