@@ -1,3 +1,11 @@
 // Place all the styles related to the homepage controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#slogan{margin-top:40px; text-align:center; font-size:45px; margin-bottom:10px;}
+#subtext{text-align:center; color:gray;}
+#create_button{text-align:center;}
+.hero-unit{margin-top:80px; height:300px;}
+footer{border-top:none; text-align:right; color:white;}
+
+body{height:700px; background-image:url('/assets/hero-background.jpg');}
