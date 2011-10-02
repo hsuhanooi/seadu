@@ -23,14 +23,10 @@ class RoomsController < ApplicationController
   end
 
   def show
-    @room = Room.find params[:id]
-    @questions = Question.select(
-      "questions.*, COUNT(votes.id) as votes_count"
-    ).joins(
-      "JOIN votes on votes.question_id = questions.id"
-    ).group(
-      "votes.question_id"
-    ).where("questions.room_id=#{@room.id}")
+    @room = Room.find(params[:id])
+    @questions = @room.questions.highest_rated
+    @mr_questions = @room.questions.most_recent
+    @question = Question.new(room: @room)
     
     if mobile?
       render :template => "rooms/mobile"

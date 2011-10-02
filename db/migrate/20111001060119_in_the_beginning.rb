@@ -7,7 +7,7 @@ class InTheBeginning < ActiveRecord::Migration
     end
     
     create_table :questions do |t|
-      t.integer :status
+      t.string :status
       t.integer :room_id
       t.string :content
       t.timestamps
@@ -15,7 +15,8 @@ class InTheBeginning < ActiveRecord::Migration
     
     create_table :rooms do |t|
       t.string :name
-      t.integer :mood_threshold
+      t.string :status
+      t.integer :vibe_threshold
       t.integer :question_threshold
       t.integer :teacher_id
       t.timestamps
@@ -26,7 +27,7 @@ class InTheBeginning < ActiveRecord::Migration
     end
     
     create_table :votes do |t|
-      t.integer :vote_type
+      t.string :vote_type
       t.integer :question_id
       t.timestamps
     end

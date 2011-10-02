@@ -1,0 +1,6 @@
+<%= form_for(@question, remote: true, html: {id: 'question_form'}) do |f| %>
+  <div class="errors"></div>
+  <%= f.hidden_field(:room_id)%>
+  <%= f.text_field(:content, value: 'Ask a question...') %>
+  <%= f.submit(:ask) %>
+<% end %>

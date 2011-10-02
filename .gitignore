@@ -3,5 +3,6 @@ db/*.sqlite3
 log/*.log
 tmp/
 .sass-cache/
-config/database.yml
 th-mysql-config*
+public/stylesheets/*.css
+config/database.yml

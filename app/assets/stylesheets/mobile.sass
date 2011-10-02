@@ -1,66 +1,121 @@
-// @import "compass"
+@import "layout"
+
+$button-width: 200px
+
+=clearfix
+  overflow: hidden
+  
+=float-left
+  float: left
+  
+=float-right
+  float: right
 
 #mobile_container
-  margin: 10px 20px
+  font-size: 40px
+  line-height: 1.2
+  padding: 10px 20px 40px
   
   .section_title
     font-weight: bold
-    margin: 10px 0
+    margin: 20px 0
+
+  input, textarea
+    font-size: 36px
+    line-height: 1.2
 
 #mobile_header
-  border-bottom: 1px solid gray
-  padding: 20px 0
+  border-bottom: 5px solid black
+  padding-bottom: 40px
   
   #room_name
     font-weight: bold
     text-align: center
 
 #vibes
-  overflow: hidden
+  +clearfix
   
   .vibe
-    float: left
+    +float-left
     width: 33%
     text-align: center
 
     .vibe_button
-      margin: 10px 20px
+      display: block
+      height: 150px
+      margin: 20px 10px
       
 #ask_a_question
   padding: 20px 0
   width: 100%
   
-  #question_field
-    padding: 4px 0
-    width: 100%
+  #ask_container
+    // +border-radius(3px)
+    border: 1px solid $light-gray
+    padding: 10px
+    position: relative
     
+    form
+      margin: 0
+    
+    #ask_content, #ask_submit
+      height: 200px
+    
+    #ask_content
+      margin-right: $button-width + 20px
+      
+      textarea
+        border: 0
+        height: 100%
+        padding: 0
+        width: 100%
+      
+    #ask_submit
+      position: absolute
+      right: 10px
+      top: 10px
+      width: $button-width
+      
+      input[type="submit"]
+        height: 100%
+        width: 100%
+  
+  #question_field
+    height: 150px
+    padding: 10px 0
+    width: 100%
     
 #other_questions
   #questions
     .question
-      border: 1px solid gray
-      padding: 10px 20px
+      // +border-radius(3px)
+      border: 1px solid $light-gray
+      padding: 20px
+      position: relative
       
-      .question_header, .question_footer
-        overflow: hidden
-      
-      .question_header
-        position: relative
-      
-        .question_content
-          margin-right: 100px
+      .question_body
+        margin-right: $button-width + 20px
+        
+        .question_info
+          font-size: 30px
+          margin-bottom: 20px
           
-        .question_votes
-          position: absolute
-          top: 0
-          right: 0
-          width: 75px
-          text-align: right
+          .question_votes
+            font-weight: bold
           
-      .question_footer
-        .question_time
-          color: gray
-          float: left
+          .question_time
+            color: gray
           
-        .question_vote
-          float: right
+        .question_content 
+          font-size: 36px
+          
+      .question_vote
+        height: 100%
+        position: absolute
+        top: 0
+        right: 10px
+        width: $button-width
+        
+        input[type="submit"]
+          height: 100%
+          width: 100%

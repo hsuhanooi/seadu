@@ -1,0 +1,47 @@
+grossman:
+  id: 1
+  name: grossman_cse142
+  status: active
+  vibe_threshold: 2
+  question_threshold: 4
+  teacher_id: 1
+
+etzioni_cse500:
+  id: 2
+  name: etzioni_cse500
+  status: active
+  vibe_threshold: 5
+  question_threshold: 2
+  teacher_id: 2
+
+etzioni_cse400:
+  id: 3
+  name: "etzioni_cse400"
+  status: 'active'
+  vibe_threshold: 4
+  question_threshold: 5
+  teacher_id: 2
+
+etzioni_cse300:
+  id: 4
+  name: "etzioni_cse300"
+  status: 'expired'
+  vibe_threshold: 2
+  question_threshold: 7
+  teacher_id: 2
+  
+etzioni_cse200:
+  id: 5
+  name: "etzioni_cse200"
+  status: 'expired'
+  vibe_threshold: 1
+  question_threshold: 2
+  teacher_id: 2
+    
+etzioni_cse100:
+  id: 6
+  name: "etzioni_cse100"
+  status: 'expired' 
+  vibe_threshold: 3
+  question_threshold: 4
+  teacher_id: 2

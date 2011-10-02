@@ -1,22 +1,20 @@
-<h1>Room</h1>
-
-ID: <%= @room.id %>
-Name: <%= @room.name %>
-
-<div id="confused_button" class="vibe">
-	<%= link_to "Confused", create_vibe_url(:room_id => @room.id, :vibe_type => :confused), :remote => true, :success => "$('div#confused_button').hide()" %>
-</div>
-
-<div id="praised_button" class="vibe">
-	<%= link_to "Praised", create_vibe_url(:room_id => @room.id, :vibe_type => :praised) %>
-</div>
-
-<div id="bored_button" class="vibe">
-	<%= link_to "Bored", create_vibe_url(:room_id => @room.id, :vibe_type => :bored) %>
-</div>
-
-<%= form_for @question do |f| %>
-	<%= f.label :content, "Question" %>
-	<%= f.text_area :content %>
-	<%= f.submit "Ask" %>
+<% content_for(:head) do %>
+  <%= stylesheet_link_tag "students" %>
 <% end %>
+
+<div id="students_view">
+  <div id="room_name">
+    <%= @room.id %>:
+    <%= @room.name %>
+  </div>
+  
+  <!-- Graph stuff goes here -->
+  
+  <%= render :partial => "vibes/buttons", :locals => {:room => @room} %>
+  
+  <%= render :partial => "questions/ask", :locals => {:room => @room} %>
+  
+  <div id="other_questions">
+    <%= render :partial => "questions/question", :collection => @questions %>
+  </div>
+</div>
