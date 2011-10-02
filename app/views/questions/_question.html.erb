@@ -4,7 +4,7 @@
 <div id="question_<%= question.id %>" class="question">
   
   <div class="votes_container">
-    <% if votes %>
+    <% if !@admin %>
       <div class="question_vote" data-count="<%= question.up_votes.count %>">
         <%= form_tag(question_vote_path(id: question.id), remote: true) do %>
           <%= hidden_field_tag :vote_type, "up" %>
@@ -33,7 +33,7 @@
     </div>
   </div>
   
-  <% if hide_link %>
-  	<%= link_to "X", hide_question_url, :remote => true, :class => "hide_link", :onclick => "$('#question_#{question.id}').hide()" %>
+  <% if @admin %>
+  	<%= link_to "X", hide_question_url(id: question.id), :remote => true, :class => "hide_link", :onclick => "$('#question_#{question.id}').hide()" %>
 	<% end %>
 </div>

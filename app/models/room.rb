@@ -1,7 +1,7 @@
 class Room < ActiveRecord::Base
   belongs_to :teacher
   has_many :vibes
-  has_many :questions, include: :votes
+  has_many :questions, include: :votes, :conditions => {:status => 'new'}
   
   ROOM_STATES = ['active', 'expired']
   

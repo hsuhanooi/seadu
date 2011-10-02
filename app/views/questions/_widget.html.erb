@@ -1,7 +1,7 @@
 <div>
   <div>
-    <%= link_to(:highest_rated, highest_rated_questions_path(room_id: @room.id), :remote => true) %> | 
-    <%= link_to(:most_recent, most_recent_questions_path(room_id: @room.id), :remote => true) %>    
+    <%= link_to(:highest_rated, highest_rated_questions_path(room_id: @room.id, teacher: @admin), :remote => true) %> | 
+    <%= link_to(:most_recent, most_recent_questions_path(room_id: @room.id, teacher: @admin), :remote => true) %>    
   </div>
 
   <%= render :partial => 'questions/questions', :locals => {:questions => @questions} %>

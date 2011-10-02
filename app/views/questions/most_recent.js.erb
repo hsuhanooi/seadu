@@ -1,7 +1,7 @@
-$('#questions').attr('data-sort', 'most_recent');
 $('#questions').replaceWith("<%= escape_javascript( 
     render :partial => 'questions/questions', :locals => {:questions => @questions}
   ) %>");
+$('#questions').attr('data-sort', 'most_recent');
 // Clear form
 el.find('input:text,textarea').val('');
 el.find('.errors').empty();

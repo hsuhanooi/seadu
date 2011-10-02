@@ -46,10 +46,10 @@
  function refreshBlock()
  {
 	$.getJSON('<%= vibes_chart_live_url(room.id) %>', function(data) {
-		console.log(data)
-		console.log(data['bored'])
-		console.log(data['confused'])
-		console.log(chart1.series)
+    // console.log(data)
+    // console.log(data['bored'])
+    // console.log(data['confused'])
+    // console.log(chart1.series)
 		var series = chart1.series[0],
 		shift = series.data.length > 20; // shift if the series is longer than 20
 

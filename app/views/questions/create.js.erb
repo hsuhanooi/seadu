@@ -15,7 +15,8 @@ var el = $('#question_form');
   var new_item = "<li><%= escape_javascript(render :partial => 'questions/question', :object => @question) %></li>";
   if (sort == 'most_recent' || list_items.length == 0){
     $('#question_list').prepend(new_item);
-  } else if (sort == 'highest_rated' && list_items.length < 10 && ((last_item && parseInt(last_item.find('.question_vote').first().attr('data-count')) == 0) || !last_item)) {
+  } else if (sort == 'highest_rated' && list_items.length < 10) {
+    // || ((list_items.length > 10 && last_item && parseInt(last_item.find('.question_vote').first().attr('data-count')) == 0) || !last_item)
     $('#question_list').append(new_item);
   };
   // Clear form

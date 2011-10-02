@@ -9,6 +9,7 @@ class QuestionsController < ApplicationController
   def highest_rated
     @questions = Question.from_room(params[:room_id]).highest_rated.page(params[:page])
     @page = params[:page]
+    @admin = true if params[:teacher].eql?('true')
     
     respond_with(@questions)
   end
@@ -16,6 +17,7 @@ class QuestionsController < ApplicationController
   def most_recent
     @questions = Question.from_room(params[:room_id]).most_recent.page(params[:page])
     @page = params[:page]
+    @admin = true if params[:teacher].eql?('true')
     
     respond_with(@questions)
   end

@@ -1,0 +1,15 @@
+var vibes = $('#vibes .vibe');
+var vt = null;
+switch("<%= @vibe.vibe_type %>") {
+  case "good": vt = "Engaged"; break;
+  case "bored": vt = "Bored"; break;
+  case "confused": vt = "Lost"; break;
+}
+var vibe = null;
+$.each(vibes, function(index, value) {
+  if ($(value).find('.vibe_title').first().text() == vt) {
+    $(value).find('.btn').addClass('info disabled');
+  } else {
+   $(value).find('.btn').removeClass('info disabled');
+  }
+});
