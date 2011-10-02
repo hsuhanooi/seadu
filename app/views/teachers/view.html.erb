@@ -1,4 +1,10 @@
-<%= javascript_include_tag 'highcharts' %>
+<%= content_for(:head) do %>
+  <%= javascript_include_tag 'highcharts' %>
+  
+  <%= stylesheet_link_tag "question" %>
+  <%= stylesheet_link_tag "teachers" %>
+<% end %>
+
 
 <script type="text/javascript">
  function refreshListeners()
@@ -18,28 +24,20 @@
  setInterval("refreshListeners();", 5000);
 </script>
 
-<h1>Room</h1>
+<div id="teachers_view">
+  <div id="teachers_header">
+    <div id="room_name">
+      <%= @room.name %>
+    </div>
+    <div id="num_listeners">
+      <%= pluralize(@room.num_listeners, "person") %>
+      in room
+    </div>
+  </div>
 
-<% if flash[:success] %>
-	<p><%= flash[:success] %></p>
-<% elsif flash[:error] %>
-	<p><%= flash[:error] %></p>
-<% end %>
-
-<%= render_vibe_chart(@room) %>
-
-ID: <%= @room.id %>
-<br>
-Name: <%= @room.name %>
-<br>
-Teacher URL: <%= link_to teachers_view_url(@room.id), teachers_view_url(@room.id) %>
-<br>
-Student URL: <%= link_to students_view_url(@room.id), students_view_url(@room.id) %>
-<br>
-<div class="listeners">Listeners: <span class="listeners"><%= @room.num_listeners %></span></div>
-<br>
-Status: <%= @room.finished? ? "This room has finished." : "This room is currently active." %>
-
-<% if !@room.finished? %>
-	<%= button_to "Finished", finish_room_url(@room.id) %>
-<% end %>
+  <%= render_vibe_chart(@room) %>
+  
+  <div id="questions">
+    <%= render :partial => "questions/question", :collection => @questions %>
+  </div>
+</div>
