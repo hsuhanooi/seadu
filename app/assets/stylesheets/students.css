@@ -1,0 +1,7 @@
+/* Put global styles here and
+ * import it into individual 
+ * stylesheets that need it
+ * =========================== */
+body {
+  color: gray;
+  font-family: Helvetica; }

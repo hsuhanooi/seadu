@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111002003000) do
+ActiveRecord::Schema.define(:version => 20111002023135) do
 
   create_table "questions", :force => true do |t|
     t.string   "status"
@@ -35,6 +35,8 @@ ActiveRecord::Schema.define(:version => 20111002003000) do
 
   create_table "teachers", :force => true do |t|
     t.string "email"
+    t.string "password_hash"
+    t.string "password_salt"
   end
 
   create_table "vibes", :force => true do |t|

@@ -14,11 +14,18 @@ Seadu::Application.routes.draw do
   resources :questions
   resources :votes
   
+  match "signup" => "teachers#new", :as => "new_teachers"
+  resource :teachers
+  
+  match "login" => "teacher_sessions#new", :as => "new_teacher_sessions"
+  resource :teacher_sessions
+  
   match 'teachers/view/:room_id' => 'teachers#view', :as => :teachers_view
   match 'students/view/:room_id' => 'students#view', :as => :students_view
   
   match 'sms' => 'sms#sms', :as => :sms
   match 'vibes/chart/data/:room_id' => 'vibes#chart_data', :as => :vibes_chart_data
+  match 'vibes/chart/live/:room_id' => 'vibes#chart_live', :as => :vibes_chart_live
   match 'vibes/chart/:room_id' => 'vibes#chart', :as => :vibes_chart
 
 # The priority is based upon order of creation:

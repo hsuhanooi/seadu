@@ -1,6 +1,7 @@
 @import "layout"
-
-$button-width: 200px
+@import "vibes"
+@import "ask_container"
+@import "question"
 
 =clearfix
   overflow: hidden
@@ -14,10 +15,9 @@ $button-width: 200px
 #mobile_container
   font-size: 40px
   line-height: 1.2
-  padding: 10px 20px 40px
+  margin: 10px 20px 40px
   
   .section_title
-    font-weight: bold
     margin: 20px 0
 
   input, textarea
@@ -25,97 +25,32 @@ $button-width: 200px
     line-height: 1.2
 
 #mobile_header
-  border-bottom: 5px solid black
-  padding-bottom: 40px
+  +clearfix
+  padding: 20px 0 40px
   
   #room_name
-    font-weight: bold
-    text-align: center
-
-#vibes
-  +clearfix
-  
-  .vibe
     +float-left
-    width: 33%
-    text-align: center
+    color: black
+    font-weight: bold
+    text-transform: capitalize
+    
+  #num_listeners
+    +float-right
+    color: $light-gray
 
-    .vibe_button
-      display: block
-      height: 150px
-      margin: 20px 10px
-      
-#ask_a_question
-  padding: 20px 0
-  width: 100%
-  
-  #ask_container
-    // +border-radius(3px)
-    border: 1px solid $light-gray
-    padding: 10px
-    position: relative
-    
-    form
-      margin: 0
-    
-    #ask_content, #ask_submit
-      height: 200px
-    
-    #ask_content
-      margin-right: $button-width + 20px
-      
-      textarea
-        border: 0
-        height: 100%
-        padding: 0
-        width: 100%
-      
-    #ask_submit
-      position: absolute
-      right: 10px
-      top: 10px
-      width: $button-width
-      
-      input[type="submit"]
-        height: 100%
-        width: 100%
-  
-  #question_field
-    height: 150px
-    padding: 10px 0
+#action_panel
+  border: 1px solid $light-gray
+
+  #ask_a_question
+    padding: 40px 0
     width: 100%
-    
+  
+    .section_title
+      margin: 20px 40px
+  
 #other_questions
+  margin-top: 40px
+  
   #questions
-    .question
-      // +border-radius(3px)
-      border: 1px solid $light-gray
-      padding: 20px
-      position: relative
-      
-      .question_body
-        margin-right: $button-width + 20px
-        
-        .question_info
-          font-size: 30px
-          margin-bottom: 20px
-          
-          .question_votes
-            font-weight: bold
-          
-          .question_time
-            color: gray
-          
-        .question_content 
-          font-size: 36px
-          
-      .question_vote
-        height: 100%
-        position: absolute
-        top: 0
-        right: 10px
-        width: $button-width
-        
-        input[type="submit"]
-          height: 100%
-          width: 100%
+    list-style: none
+    margin: 0

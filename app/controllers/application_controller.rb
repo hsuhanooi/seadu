@@ -23,4 +23,16 @@ class ApplicationController < ActionController::Base
     return true if Rails.env == "development" && params[:mobile]
     request.user_agent =~ /Mobile|webOS/
   end
+  
+  def current_teacher
+    teacher_id = session[:teacher_id]
+    @current_teacher ||= teacher_id && Teacher.find(teacher_id)
+  end
+  
+  def require_teacher
+    unless current_teacher
+      flash[:error] = "Please login to view this page"
+      redirect_to new_teacher_sessions_url(:return_to => request.request_uri)
+    end
+  end
 end
