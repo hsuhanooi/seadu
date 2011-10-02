@@ -24,6 +24,9 @@
     font-size: 36px
     line-height: 1.2
 
+  ul li
+    line-height: 1.2
+
 #mobile_header
   +clearfix
   padding: 20px 0 40px
@@ -40,6 +43,7 @@
 
 #action_panel
   border: 1px solid $light-gray
+  margin-bottom: 40px
 
   #ask_a_question
     padding: 40px 0
@@ -48,9 +52,29 @@
     .section_title
       margin: 20px 40px
   
-#other_questions
-  margin-top: 40px
+#questions
+  list-style: none
+  margin: 40px 0 0
   
-  #questions
-    list-style: none
-    margin: 0
+  .question_vote
+    input[type="submit"]
+      -webkit-border-top-left-radius: 5px
+      -webkit-border-top-right-radius: 5px
+      -moz-border-radius-topleft: 5px
+      -moz-border-radius-topright: 5px
+      border-top-left-radius: 5px
+      border-top-right-radius: 5px
+      -webkit-border-bottom-right-radius: 0
+      -webkit-border-bottom-left-radius: 0
+      -moz-border-radius-bottomright: 0
+      -moz-border-radius-bottomleft: 0
+      border-bottom-right-radius: 0
+      border-bottom-left-radius: 0
+  
+  .question_vote_num
+    -webkit-border-bottom-right-radius: 5px
+    -webkit-border-bottom-left-radius: 5px
+    -moz-border-radius-bottomright: 5px
+    -moz-border-radius-bottomleft: 5px
+    border-bottom-right-radius: 5px
+    border-bottom-left-radius: 5px

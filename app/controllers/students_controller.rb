@@ -13,7 +13,7 @@ class StudentsController < ApplicationController
     @question = Question.new(room: @room)
 
     if mobile?
-      render :template => "students/mobile"
+      render :template => "students/mobile", :layout => "mobile"
     end
   end
   
