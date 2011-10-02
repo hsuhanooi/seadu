@@ -13,6 +13,10 @@ class Question < ActiveRecord::Base
   
   after_initialize :init
   
+  def up_votes
+    votes.up
+  end
+  
   private
   def init
     self.status ||= 'new'

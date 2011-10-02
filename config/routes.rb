@@ -8,6 +8,7 @@ Seadu::Application.routes.draw do
   
   match 'questions/most_recent' => 'questions#most_recent', :as => 'most_recent_questions'
   match 'questions/highest_rated' => 'questions#highest_rated', :as => 'highest_rated_questions'
+  match 'questions/:id/vote' => 'questions#vote', :as => 'question_vote', :method => :post
   resources :questions
   resources :votes
   

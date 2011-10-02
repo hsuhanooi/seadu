@@ -24,6 +24,11 @@ class QuestionsController < ApplicationController
     respond_with(@questions)
   end
   
+  def vote
+    @question = Question.find(params[:id])
+    @question.votes.create(vote_type: params[:vote_type])
+  end
+  
   def create
     require_params :question
     @question = Question.new(params[:question])

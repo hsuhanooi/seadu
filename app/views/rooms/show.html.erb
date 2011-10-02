@@ -1,10 +1,7 @@
 <script>
 
 </script>
-<h1>Room</h1>
-
-ID: <%= @room.id %></br>
-Name: <%= @room.name %></br>
+<h1><%= @room.name %></h1>
 <div>
   <div>
     <%= link_to(:highest_rated, highest_rated_questions_path(room_id: @room.id), :remote => true) %> | 
