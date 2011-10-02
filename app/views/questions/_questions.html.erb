@@ -2,7 +2,7 @@
   <%= paginate(@questions)%>
   <ul id="question_list">
   <% questions.each do |question| %>
-    <li><%= render question %></li>
+    <li class="question_wrapper"><%= render question %></li>
   <% end %>
   </ul>
 </div>
