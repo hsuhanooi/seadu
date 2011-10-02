@@ -29,6 +29,11 @@ class Room < ActiveRecord::Base
     status.eql?('active')
   end
   
+  #Returns the end time for the room or the current time if its still open
+  def ended_at
+    read_attribute[:ended_at] || Time.now
+  end
+  
   def mock
     Vibe::VIBE_TYPES.each{ |vibe|
       created = created_at + rand(3300) + 300
