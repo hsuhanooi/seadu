@@ -1,5 +1,5 @@
 $('#questions').attr('data-sort', 'most_recent');
-$('#questions').html("<%= escape_javascript( 
+$('#questions').replaceWith("<%= escape_javascript( 
     render :partial => 'questions/questions', :locals => {:questions => @questions}
   ) %>");
 // Clear form
