@@ -1,27 +1,27 @@
 class QuestionsController < ApplicationController
   respond_to :js
   def index
-    @questions = Question.where(params[:question]).page(params[:page])
+    @questions = Question.where(params[:question]).includes(:votes).page(params[:page])
     
     respond_with(@questions)
   end
   
   def highest_rated
-    @questions = Question.where(room_id: params[:room_id]).highest_rated.page(params[:page])
+    @questions = Question.from_room(params[:room_id]).highest_rated.page(params[:page])
     @page = params[:page]
     
     respond_with(@questions)
   end
   
   def most_recent
-    @questions = Question.where(room_id: params[:room_id]).most_recent.page(params[:page])
+    @questions = Question.from_room(params[:room_id]).most_recent.page(params[:page])
     @page = params[:page]
     
     respond_with(@questions)
   end
 
   def newly_created
-    @questions = Question.where(room_id: params[:room_id]).where('created_at > ?', Time.parse(params[:after])).most_recent.page(params[:page])
+    @questions = Question.from_room(params[:room_id]).after(params[:after]).most_recent.page(params[:page])
     @page = params[:page]
     
     respond_with(@questions)
