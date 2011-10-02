@@ -8,3 +8,5 @@ Teacher URL: <%= link_to teachers_view_url(@room.id), teachers_view_url(@room.id
 <br>
 Student URL: <%= link_to students_view_url(@room.id), students_view_url(@room.id) %>
 <br>
+<%= button_to "Finished", {:controller => "rooms", :action => "save"}, :method => :get %>
+

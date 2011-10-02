@@ -1,0 +1,11 @@
+<h1> Teacher class archive </h1>
+
+<% archived_rooms = Room.find(:all, :conditions => {:teacher_id => params[:id]}) %>
+
+<% archived_rooms.each do |rooms|%>
+	<ul>
+		<li><%= rooms.inspect %></li>
+	</ul>
+<% end %>
+
+
