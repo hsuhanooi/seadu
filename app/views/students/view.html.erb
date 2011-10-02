@@ -5,13 +5,15 @@
   <%= stylesheet_link_tag "students" %>
 <% end %>
 <div id="room" data-id="<%= @room.id %>">
-  <div id="students_view">
+  <div id="students_view" class="inner_container">
     <div id="students_header">
       <div id="room_name">
         <%= @room.name %>
       </div>
       <div id="num_listeners">
-        <%= pluralize(@room.num_listeners, "person") %>
+        <span class="listeners">
+          <%= pluralize(@room.num_listeners, "person") %>
+        </span>
         in room
       </div>
     </div>
