@@ -1,15 +1,15 @@
 $(function () {
   if ($('#question_list li').length > 0) {
-    setTimeout(updateQuestions, 10000);
+    setTimeout(updateQuestions, 5000);
   };
 });
 
 function updateQuestions() {
   var room_id = $('#room').attr('data-id')
-  var after = $('.question:first').attr('data-time');
   var page = $('#questions').attr('data-page');
+  var sorting = $('#questions').attr('data-sort');
   if (!page) {
-    $.getScript('/questions/newly_created.js?room_id=' + room_id + "&after=" + after + "&page=" + page);
+    $.getScript('/questions/' + sorting + '.js?room_id=' + room_id + "&page=" + page);
   };
-  setTimeout(updateQuestions, 10000);
+  setTimeout(updateQuestions, 5000);
 }

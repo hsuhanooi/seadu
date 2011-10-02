@@ -1,4 +1,4 @@
-<div id="questions" data-page="<%= @page %>">
+<div id="questions" data-page="<%= @page %>" data-sort="<%= @sort_order || 'highest_rated' %>">
   <%= paginate(@questions)%>
   <ul id="question_list">
   <% questions.each do |question| %>

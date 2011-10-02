@@ -1,7 +1,7 @@
-<div id="question_<%= question.id %>" class="question" data-time="<%= question.pg_created_at %>">
+<div id="question_<%= question.id %>" class="question">
   <div class="question_body">
     <div class="question_info">
-      <span class="question_votes">
+      <span class="question_votes" data-count="<%= question.up_votes.count %>">
         <%= pluralize(question.up_votes.count, "vote") %>
       </span>
       <span class="question_time">
