@@ -12,7 +12,7 @@
       </div>
     <% end %>
 
-	<%= link_to "X", hide_question_url(:id => question.id), :remote => true, :onclick => "$('question_#{question.id}').hide()" %>
+	<%= link_to "X", hide_question_url(:id => question.id), :remote => true, :onclick => "$('#question_#{question.id}').hide()" %>
 
     <div class="question_vote_num">
       <%= question.votes.count %>
