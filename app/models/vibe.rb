@@ -19,7 +19,11 @@ class Vibe < ActiveRecord::Base
   ChartSeriesOrder = ['bored', 'confused', 'good']
   
   def self.chart(room_id)
-    sql = "SELECT count(1) as room_id, vibe_type, created_at FROM vibes where room_id = #{room_id} GROUP BY vibe_type, (60/1) * #{created_at.hour} + #{ Math.floor(created_at.minute/1)}"
+    if Rails.env.development?
+      sql = "SELECT count(1) as room_id, vibe_type, created_at FROM vibes where room_id = #{room_id} GROUP BY vibe_type, (60/1) * HOUR( created_at ) + FLOOR( MINUTE( created_at ) / 1 )"
+    else
+      sql = "SELECT count(1) as room_id, vibe_type, created_at, ((60/1) * EXTRACT(HOUR from created_at)  + FLOOR( EXTRACT(MINUTE FROM created_at ) / 1 )) as created_minutes FROM vibes where room_id = 6 GROUP BY vibe_type, created_minutes, created_at"
+    end
     Vibe.find_by_sql(sql)
   end
   
