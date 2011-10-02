@@ -3,22 +3,23 @@
 <% end %>
 
 <div id="mobile_container">
+  
   <div id="mobile_header">
     <div id="room_name">
-      <%= @room.id %>:
       <%= @room.name %>
     </div>
-    
-    <%= render :partial => "vibes/buttons", :locals => {:room => @room} %>
+    <div id="num_listeners">
+      <%= pluralize(@room.num_listeners, "person") %>
+      in room
+    </div>
   </div>
 
-  <%= render :partial => "questions/ask", :locals => {:room => @room} %>
+  <div id="action_panel">
+    <%= render :partial => "vibes/buttons", :locals => {:room => @room} %>
+    <%= render :partial => "questions/ask", :locals => {:room => @room} %>
+  </div>
 
   <div id="other_questions">
-    <div class="section_title">
-      Other Questions
-    </div>
-
     <div id="questions">
       <%= render :partial => "questions/question", :collection => @questions %>
     </div>

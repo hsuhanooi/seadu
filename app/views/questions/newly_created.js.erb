@@ -1,0 +1,9 @@
+$('#questions').attr('data-page', '<%= @page %>')
+<% @questions.each do |question| %>
+  $("#question_list").prepend("<li><%= escape_javascript( 
+      render :partial => 'questions/question', :locals => {:question => question}
+    ) %></li>");
+    if ($('#question_list li').length > 10) {
+      $('#question_list li:last').remove();
+    };
+<% end %>

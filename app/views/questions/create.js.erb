@@ -8,11 +8,17 @@ var el = $('#question_form');
   <% end %>
   // Display errors on form
   el.find('.errors').html(list);
-<% else %>  
-  $('#question_list').prepend("<%= escape_javascript( 
-      render :partial => 'questions/question', :object => @question
-    ) %>");
+<% else %>
+  var sort = $('#questions').attr('data-sort');
+  var list_items = $('#question_list li');
+  var last_item = list_items.last();
+  var new_item = "<li><%= escape_javascript(render :partial => 'questions/question', :object => @question) %></li>"
+  if (sort == 'most_recent' || list_items.length == 0){
+    $('#question_list').prepend(new_item);
+  } else if (sort == 'highest_rated' && list_items.length < 10 && ((last_item && parseInt(last_item.find('.question_votes').first().attr('data-count')) <= <%= @question.up_votes.count %>) || !last_item)) {
+    $('#question_list').append(new_item);
+  };
   // Clear form
   el.find('input:text,textarea').val('');
-  el.find('#errors').empty();
+  el.find('.errors').empty();
 <% end %>

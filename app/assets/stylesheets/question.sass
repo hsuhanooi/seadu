@@ -1,0 +1,43 @@
+@import "colors"
+
+.question
+  border-bottom: 1px solid $light-gray
+  padding: 40px 0
+  min-height: 215px
+  position: relative
+  
+  .votes_container
+    position: absolute
+    top: 40px
+    width: 100px
+    
+    .question_vote
+      form
+        margin-bottom: 0
+        
+      input[type="submit"]
+        background-image: url("/images/vote_arrow.png")
+        background-position: 28px 20px
+        background-repeat: no-repeat
+        color: transparent
+        height: 75px
+        width: 100%
+      
+    .question_vote_num
+      background-color: $light-blue
+      color: white
+      margin: 5px 0 20px
+      padding: 20px 0
+      text-align: center
+    
+    .question_vote_title
+      color: $light-gray
+      font-size: 32px
+      text-align: center
+  
+  .question_body
+    margin-left:  140px
+    
+    .question_time
+      color: $light-gray
+      margin-top: 40px

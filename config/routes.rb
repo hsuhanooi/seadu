@@ -9,14 +9,23 @@ Seadu::Application.routes.draw do
   
   match 'questions/most_recent' => 'questions#most_recent', :as => 'most_recent_questions'
   match 'questions/highest_rated' => 'questions#highest_rated', :as => 'highest_rated_questions'
+  match 'questions/newly_created' => 'questions#newly_created', :as => 'newly_created_questions'
   match 'questions/:id/vote' => 'questions#vote', :as => 'question_vote', :method => :post
   resources :questions
   resources :votes
+  
+  match "signup" => "teachers#new", :as => "new_teachers"
+  resource :teachers
+  
+  match "login" => "teacher_sessions#new", :as => "new_teacher_sessions"
+  resource :teacher_sessions
   
   match 'teachers/view/:room_id' => 'teachers#view', :as => :teachers_view
   match 'students/view/:room_id' => 'students#view', :as => :students_view
   
   match 'sms' => 'sms#sms', :as => :sms
+  match 'vibes/chart/data/:room_id' => 'vibes#chart_data', :as => :vibes_chart_data
+  match 'vibes/chart/live/:room_id' => 'vibes#chart_live', :as => :vibes_chart_live
   match 'vibes/chart/:room_id' => 'vibes#chart', :as => :vibes_chart
 
 # The priority is based upon order of creation:

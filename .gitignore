@@ -6,3 +6,4 @@ tmp/
 th-mysql-config*
 public/stylesheets/*.css
 config/database.yml
+*.DS_Store
