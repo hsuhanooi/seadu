@@ -2,6 +2,9 @@ class VotesController < ApplicationController
   def create
     require_params :vote
     @vote = Vote.new params[:vote]
-    save_and_render_status(@vote)
+    
+    if @vote.save!
+      redirect_to :back
+    end
   end
 end
