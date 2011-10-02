@@ -1,0 +1,69 @@
+<script type="text/javascript">
+  var chart1; // globally available
+  $(document).ready(function() {
+    chart1 = new Highcharts.Chart({
+      chart: {
+        renderTo: 'chart-container-1',
+        defaultSeriesType: 'area'
+      },
+      title: {
+        text: 'Vibe Chart'
+      },
+      yAxis: {
+        title: {
+          text: '# of Vibes'
+        }
+      },
+      xAxis: {
+        title: {
+          text: 'Time (Sec from Start)'
+        }
+      },
+      series: [<%= Vibe.chart_series(room.id) %>],
+      plotOptions: {
+	    area: {
+	      stacking: 'normal',
+	      lineColor: '#666666',
+	      lineWidth: 1,
+	      marker: {
+	        lineWidth: 1,
+	        lineColor: '#666666'
+	      }
+	    }
+	  }
+    });
+  });
+</script>
+
+<% if !room.finished? && room.seconds_alive < 7200 %>
+<script type="text/javascript">
+ window.onload = setupRefresh;
+ function setupRefresh()
+ {
+   setInterval("refreshBlock();",<%= Vibe::PollInterval * 1000 %>);
+ }
+
+ function refreshBlock()
+ {
+	$.getJSON('<%= vibes_chart_live_url(room.id) %>', function(data) {
+		console.log(data)
+		console.log(data['bored'])
+		console.log(data['confused'])
+		console.log(chart1.series)
+		var series = chart1.series[0],
+		shift = series.data.length > 20; // shift if the series is longer than 20
+
+		// add the point
+		chart1.series[0].addPoint(data.bored, true, shift);
+
+		var series = chart1.series[1],
+		shift = series.data.length > 20; // shift if the series is longer than 20
+		
+		// add the point
+		chart1.series[1].addPoint(data.confused, true, shift);
+	});
+ }
+ </script>
+<% end %>
+
+<div id="chart-container-1" style="width: 100%; height: 400px"></div>
