@@ -16,7 +16,7 @@ class Vibe < ActiveRecord::Base
   
   Point = Struct.new(:count, :seconds_after_start)
   
-  ChartSeriesOrder = ['bored', 'confused']
+  ChartSeriesOrder = ['bored', 'confused', 'good']
   
   def self.chart(room_id)
     sql = "SELECT count(1) as room_id, vibe_type, created_at FROM `vibes` where room_id = #{room_id} GROUP BY vibe_type, (60/1) * HOUR( created_at ) + FLOOR( MINUTE( created_at ) / 1 )"
@@ -27,7 +27,7 @@ class Vibe < ActiveRecord::Base
     last_format = (last_ping - PollInterval - Decay).utc.strftime("%Y-%m-%d %H:%M:%S")
     sql = "SELECT count(1) as room_id, vibe_type FROM `vibes` where room_id = #{room.id} and created_at > '#{last_format}' GROUP BY vibe_type"
     seconds = (Time.now - room.created_at).round
-    hash = {:bored => [seconds, 0], :confused => [seconds, 0]}
+    hash = {:bored => [seconds, 0], :confused => [seconds, 0], :good => [seconds, 0]}
     vibes = Vibe.find_by_sql(sql)
     vibes.each{|v|
       p = Point.new(v.room_id, seconds)
