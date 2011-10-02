@@ -38,6 +38,6 @@
   <%= render_vibe_chart(@room) %>
   
   <div id="questions">
-    <%= render :partial => "questions/question", :collection => @questions %>
+    <%= render :partial => "questions/question", :collection => @questions, :locals => {:votes => false} %>
   </div>
 </div>
