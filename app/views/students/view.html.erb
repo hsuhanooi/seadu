@@ -12,7 +12,7 @@
   
   <%= render :partial => "vibes/buttons", :locals => {:room => @room} %>
   
-  <%= render :partial => "questions/ask" %>
+  <%= render :partial => "questions/ask", :locals => {:room => @room} %>
   
   <div id="other_questions">
     <%= render :partial => "questions/question", :collection => @questions %>

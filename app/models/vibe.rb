@@ -9,4 +9,5 @@ class Vibe < ActiveRecord::Base
   
   validates :room_id, presence: true
   validates :vibe_type, inclusion: {in: VIBE_TYPES}
+  
 end

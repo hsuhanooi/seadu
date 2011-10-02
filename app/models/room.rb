@@ -29,6 +29,29 @@ class Room < ActiveRecord::Base
     status.eql?('active')
   end
   
+  def mock
+    Vibe::VIBE_TYPES.each{ |vibe|
+      created = created_at + rand(3300) + 300
+      (1..200).each{|i|
+        v = Vibe.new(:vibe_type => vibe, :room_id => id, :created_at => created, :updated_at => created)
+        v.save!
+      }
+    }
+    
+    test_q = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+    
+    (1..30).each{|i|
+      content = test_q[0, rand(test_q.length)]
+      created = created_at + rand(3300) + 300
+      q = Question.create(:status => "new", :room_id => id, :content => content, :created_at => created, :updated_at => created)
+      
+      (1..(rand(50) + 1)).each{|c|
+        v_created_at = q.created_at + rand(3300) + 300
+        Vote.create(:vote_type => Vote::VOTE_TYPES[0], :question_id => q.id, :created_at => v_created_at, :updated_at => v_created_at)
+      }
+    }
+  end
+  
   private
   def init
     self.status ||= 'active'
