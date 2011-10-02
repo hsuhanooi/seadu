@@ -1,4 +1,18 @@
 class VibesController < ApplicationController
+  
+  def randomize_chart
+    room_id = params[:room_id]
+    Vibe.delete_all("room_id = #{room_id}")
+    room = Room.find(room_id)
+    room.mock
+    redirect_to :action => :chart, :room_id => room_id
+  end
+  
+  def chart
+    room_id = params[:room_id]
+    @room = Room.find(room_id)
+  end
+  
   def create
     room_id   = params[:room_id]
     vibe_type = params[:vibe_type]
