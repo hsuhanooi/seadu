@@ -17,7 +17,6 @@ $button-width: 200px
   margin: 10px 20px 40px
   
   .section_title
-    font-weight: bold
     margin: 20px 0
 
   input, textarea
@@ -26,15 +25,16 @@ $button-width: 200px
 
 #mobile_header
   +clearfix
-  padding-bottom: 40px
-  width: 100%
+  padding: 20px 0 40px
   
   #room_name
     +float-left
+    color: black
+    font-weight: bold
+    text-transform: capitalize
     
   #num_listeners
     +float-right
-    font-size: 32px
     color: $light-gray
 
 #action_panel
@@ -52,17 +52,18 @@ $button-width: 200px
       .vibe_container
         border-left: 1px solid $light-gray
         margin-left: 1px
-        padding: 20px 0
+        padding: 40px 0
         
         &.first
           border-left: 0
           margin-left: 0
         
         .vibe_button
+          border: 1px solid $light-gray
           display: block
           height: 150px
-          margin: 0px 10px 20px
-      
+          margin: 0px 40px 20px
+          
   #ask_a_question
     padding: 40px 0
     width: 100%
@@ -154,3 +155,4 @@ $button-width: 200px
         
         .question_time
           color: $light-gray
+          margin-top: 40px
