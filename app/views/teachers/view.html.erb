@@ -30,7 +30,9 @@
       <%= @room.name %>
     </div>
     <div id="num_listeners">
-      <%= pluralize(@room.num_listeners, "person") %>
+      <span class="listeners">
+        <%= pluralize(@room.num_listeners, "person") %>
+      </span>
       in room
     </div>
   </div>
@@ -38,6 +40,6 @@
   <%= render_vibe_chart(@room) %>
   
   <div id="questions">
-    <%= render :partial => "questions/question", :collection => @questions, :locals => {:votes => false} %>
+    <%= render :partial => "questions/question", :collection => @questions, :locals => {:votes => false, :hide_link => true} %>
   </div>
 </div>
