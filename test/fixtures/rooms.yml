@@ -6,6 +6,8 @@ grossman:
   question_threshold: 4
   teacher_id: 1
   num_listeners: <%= rand(30) %>
+  created_at: <%= Time.now.utc - 3600 %>
+  updated_at: <%= Time.now.utc - 3600 %>
 
 etzioni_cse500:
   id: 2
@@ -15,6 +17,8 @@ etzioni_cse500:
   question_threshold: 2
   teacher_id: 2
   num_listeners: <%= rand(30) %>
+  created_at: <%= Time.now.utc - 3600 %>
+  updated_at: <%= Time.now.utc - 3600 %>
 
 etzioni_cse400:
   id: 3
@@ -24,6 +28,8 @@ etzioni_cse400:
   question_threshold: 5
   teacher_id: 2
   num_listeners: <%= rand(30) %>
+  created_at: <%= Time.now.utc - 3600 %>
+  updated_at: <%= Time.now.utc - 3600 %>
 
 etzioni_cse300:
   id: 4
@@ -33,6 +39,8 @@ etzioni_cse300:
   question_threshold: 7
   teacher_id: 2
   num_listeners: <%= rand(30) %>
+  created_at: <%= Time.now.utc - 3600 %>
+  updated_at: <%= Time.now.utc - 3600 %>
   
 etzioni_cse200:
   id: 5
@@ -42,6 +50,8 @@ etzioni_cse200:
   question_threshold: 2
   teacher_id: 2
   num_listeners: <%= rand(30) %>
+  created_at: <%= Time.now.utc - 3600 %>
+  updated_at: <%= Time.now.utc - 3600 %>
     
 etzioni_cse100:
   id: 6
@@ -51,3 +61,5 @@ etzioni_cse100:
   question_threshold: 4
   teacher_id: 2
   num_listeners: <%= rand(30) %>
+  created_at: <%= Time.now.utc - 3600 %>
+  updated_at: <%= Time.now.utc - 3600 %>

@@ -53,14 +53,27 @@ LISTENERS: <%= @room.num_listeners %>
  window.onload = setupRefresh;
  function setupRefresh()
  {
-   setInterval("refreshBlock();",5000);
+   setInterval("refreshBlock();",<%= Vibe::PollInterval * 1000 %>);
  }
 
  function refreshBlock()
  {
-	$.get('<%= vibes_chart_data_url(@room.id) %>', function(data) {
-	  chart1.series = data;
-	  console.log(chart1.series)
+	$.getJSON('<%= vibes_chart_live_url(@room.id) %>', function(data) {
+		console.log(data)
+		console.log(data['bored'])
+		console.log(data['confused'])
+		console.log(chart1.series)
+		var series = chart1.series[0],
+		shift = series.data.length > 20; // shift if the series is longer than 20
+
+		// add the point
+		chart1.series[0].addPoint(data.bored, true, shift);
+
+		var series = chart1.series[1],
+		shift = series.data.length > 20; // shift if the series is longer than 20
+		
+		// add the point
+		chart1.series[1].addPoint(data.confused, true, shift);
 	});
  }
  </script>

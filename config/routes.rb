@@ -25,6 +25,7 @@ Seadu::Application.routes.draw do
   
   match 'sms' => 'sms#sms', :as => :sms
   match 'vibes/chart/data/:room_id' => 'vibes#chart_data', :as => :vibes_chart_data
+  match 'vibes/chart/live/:room_id' => 'vibes#chart_live', :as => :vibes_chart_live
   match 'vibes/chart/:room_id' => 'vibes#chart', :as => :vibes_chart
 
 # The priority is based upon order of creation:

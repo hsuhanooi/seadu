@@ -14,6 +14,12 @@ class VibesController < ApplicationController
     render :text => Vibe.chart_series(@room.id)
   end
   
+  def chart_live
+    room_id = params[:room_id]
+    @room = Room.find(room_id)
+    render :text => Vibe.chart_live(@room, Time.now)
+  end
+  
   def chart
     room_id = params[:room_id]
     @room = Room.find(room_id)
