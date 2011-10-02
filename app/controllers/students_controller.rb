@@ -1,6 +1,10 @@
 class StudentsController < ApplicationController
   def view
-    @room = Room.find params[:room_id]
+    if params[:room_id]
+      @room = Room.find params[:room_id]
+    elsif params[:name]
+      @room = Room.find_by_name params[:name]
+    end
     
     #Mark the user as visited the room
     @room.visit(session)
@@ -12,4 +16,5 @@ class StudentsController < ApplicationController
       render :template => "students/mobile"
     end
   end
+  
 end

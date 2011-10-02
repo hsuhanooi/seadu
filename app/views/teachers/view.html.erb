@@ -43,3 +43,5 @@
     <%= render :partial => "questions/question", :collection => @questions, :locals => {:votes => false, :hide_link => true} %>
   </div>
 </div>
+
+Short URL for Students: <%= link_to short_room_url(:name => @room.name), short_room_url(:name => @room.name) %>

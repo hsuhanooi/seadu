@@ -31,6 +31,8 @@ Seadu::Application.routes.draw do
   
   match 'room/finish/:room_id' => 'rooms#finish_room', :as => :finish_room
   match 'room/listeners/:room_id' => 'rooms#poll_listeners', :as => :poll_listeners
+  
+  match 'r/:name' => 'students#view', :as => :short_room
 
 # The priority is based upon order of creation:
 # first created -> highest priority.
