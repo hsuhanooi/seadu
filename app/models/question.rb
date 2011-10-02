@@ -17,6 +17,10 @@ class Question < ActiveRecord::Base
     votes.up
   end
   
+  def pg_created_at
+    "#{created_at.to_s(:db)}.#{sprintf("%06d", created_at.usec)}"
+  end
+  
   private
   def init
     self.status ||= 'new'

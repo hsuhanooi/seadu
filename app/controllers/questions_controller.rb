@@ -19,7 +19,7 @@ class QuestionsController < ApplicationController
   end
 
   def newly_created
-    @questions = Question.where(room_id: params[:room_id]).where('created_at > ?', params[:after]).most_recent.page(params[:page])
+    @questions = Question.where(room_id: params[:room_id]).where('created_at > ?', Time.parse(params[:after])).most_recent.page(params[:page])
     @page = params[:page]
     
     respond_with(@questions)

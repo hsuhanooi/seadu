@@ -3,7 +3,7 @@ $('#questions').attr('data-page', '<%= @page %>')
   $("#question_list").prepend("<li><%= escape_javascript( 
       render :partial => 'questions/question', :locals => {:question => question}
     ) %></li>");
-    if ($('#questions li').length > 10) {
-      $('#questions li:last').remove();
+    if ($('#question_list li').length > 10) {
+      $('#question_list li:last').remove();
     };
 <% end %>
