@@ -75,15 +75,21 @@ class Room < ActiveRecord::Base
   
   def visit(session)
     rooms_visited = session[:rooms]
+    has_visited = false
     if rooms_visited
       rooms_visited.split(',').each{|room_id|
         if room_id.to_i == id
-          self.num_listeners = (num_listeners || 0) + 1
-          self.save
-          return true
+          has_visited = true
         end
       }
-      session[:rooms] = rooms_visited + ",#{id}"
+
+      if !has_visited
+        self.num_listeners = (num_listeners || 0) + 1
+        session[:rooms] = rooms_visited + ",#{id}"
+        self.save
+        return true
+      end
+
     else
       session[:rooms] = id.to_s
     end
