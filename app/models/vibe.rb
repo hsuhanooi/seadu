@@ -49,9 +49,17 @@ class Vibe < ActiveRecord::Base
     last_time = (ended_at - started_at).round
     max_time = last_time > 7200 ? 7200 : last_time
     ChartSeriesOrder.each{|v|
+      friendly = nil
+      if v == 'good'
+        friendly = 'Engaged'
+      elsif v == 'confused'
+        friendly = 'Lost'
+      elsif v == 'bored'
+        friendly = 'Bored'
+      end
       vibes = chart_data.select{|s| s.vibe_type == v}.sort{|x, y| x.created_at <=> y.created_at}
       str << "{\n"
-      str << "name: '#{v}',\n"
+      str << "name: '#{friendly}',\n"
       data = ["{ x: 0, y: null}", "{ x: #{max_time}, y: '0'}"]
       idx = 0
       last_count = 0
