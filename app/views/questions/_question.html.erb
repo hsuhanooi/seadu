@@ -1,4 +1,5 @@
 <% votes = true if !defined?(votes) || votes.nil? %>
+<% hide_link = false if !defined?(hide_link) || hide_link.nil? %>
 
 <div id="question_<%= question.id %>" class="question">
   
@@ -11,8 +12,6 @@
         <% end %>
       </div>
     <% end %>
-
-	<%= link_to "X", hide_question_url(:id => question.id), :remote => true, :onclick => "$('#question_#{question.id}').hide()" %>
 
     <div class="question_vote_num">
       <%= question.votes.count %>
@@ -33,4 +32,8 @@
       ago
     </div>
   </div>
+  
+  <% if hide_link %>
+  	<%= link_to "X", "#", :remote => true, :class => "hide_link", :onclick => "$('#question_#{question.id}').hide()" %>
+	<% end %>
 </div>
