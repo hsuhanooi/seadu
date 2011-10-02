@@ -6,7 +6,7 @@ class StudentsController < ApplicationController
     @room.visit(session)
     
     @questions = @room.questions.highest_rated
-    
+    @question = Question.new(room: @room)
     if mobile?
       render :template => "students/mobile"
     end
