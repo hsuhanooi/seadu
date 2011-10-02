@@ -1,28 +1,23 @@
 <% content_for(:head) do %>
   <%= stylesheet_link_tag "mobile" %>
 <% end %>
-
-<div id="mobile_container">
-  
-  <div id="mobile_header">
-    <div id="room_name">
-      <%= @room.name %>
-    </div>
-    <div id="num_listeners">
-      <%= pluralize(@room.num_listeners, "person") %>
-      in room
-    </div>
-  </div>
-
-  <div id="action_panel">
-    <%= render :partial => "vibes/buttons", :locals => {:room => @room} %>
-    <%= render :partial => "questions/ask", :locals => {:room => @room} %>
-  </div>
-
-  <div id="other_questions">
-    <div id="questions">
-      <%= render :partial => "questions/question", :collection => @questions %>
+<div id="room" data-id="<%= @room.id %>">
+  <div id="mobile_container">
+    <div id="mobile_header">
+      <div id="room_name">
+        <%= @room.name %>
+      </div>
+      <div id="num_listeners">
+        <%= pluralize(@room.num_listeners, "person") %>
+        in room
+      </div>
     </div>
 
+    <div id="action_panel">
+      <%= render :partial => "vibes/buttons", :locals => {:room => @room} %>
+      <%= render :partial => "questions/ask", :locals => {:room => @room} %>
+    </div>
+
+    <%= render :partial => "questions/widget" %>
   </div>
 </div>
