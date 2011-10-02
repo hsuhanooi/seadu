@@ -33,7 +33,7 @@ class VibesController < ApplicationController
     if @vibe.save
       respond_to do |format|
         format.html { redirect_to students_view_url(room_id) }
-        format.js
+        format.js { render :text => "Succesfully added your vibe."}
       end
     else
       respond_to do |format|
