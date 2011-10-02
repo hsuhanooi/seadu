@@ -30,7 +30,9 @@
       <%= @room.name %>
     </div>
     <div id="num_listeners">
-      <%= pluralize(@room.num_listeners, "person") %>
+      <span class="listeners">
+        <%= pluralize(@room.num_listeners, "person") %>
+      </span>
       in room
     </div>
   </div>
