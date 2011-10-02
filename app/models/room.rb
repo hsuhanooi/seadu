@@ -31,13 +31,13 @@ class Room < ActiveRecord::Base
   
   #Returns the end time for the room or the current time if its still open
   def ended_at
-    read_attribute[:ended_at] || Time.now
+    read_attribute(:ended_at) || Time.now
   end
   
   def mock
     Vibe::VIBE_TYPES.each{ |vibe|
-      created = created_at + rand(3300) + 300
       (1..200).each{|i|
+        created = created_at + rand(3300) + 300
         v = Vibe.new(:vibe_type => vibe, :room_id => id, :created_at => created, :updated_at => created)
         v.save!
       }
@@ -55,6 +55,23 @@ class Room < ActiveRecord::Base
         Vote.create(:vote_type => Vote::VOTE_TYPES[0], :question_id => q.id, :created_at => v_created_at, :updated_at => v_created_at)
       }
     }
+  end
+  
+  def visit(session)
+    rooms_visited = session[:rooms]
+    if rooms_visited
+      rooms_visited.split(',').each{|room_id|
+        if room_id.to_i == id
+          self.num_listeners = num_listeners + 1
+          self.save
+          return true
+        end
+      }
+      session[:rooms] = rooms_visited + ",#{id}"
+    else
+      session[:rooms] = id.to_s
+    end
+    return false
   end
   
   private

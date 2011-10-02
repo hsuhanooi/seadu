@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(:version => 20111002003000) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "ended_at"
+    t.integer  "num_listeners"
   end
 
   create_table "teachers", :force => true do |t|
