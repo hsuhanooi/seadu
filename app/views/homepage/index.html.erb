@@ -1,5 +1,39 @@
-<h1>
-	Seadu
-</h1>
+<%= content_for(:head) do %>
+	<%= stylesheet_link_tag "homepage" %>	
+<% end %>
 
-<%= button_to "Create Room", {:controller => "rooms", :action => "new"}, :method => :get %>
+<div id="homepage_container">
+  <div class="topbar">
+    <div class="fill">
+      <div class="container">
+        <a class="brand" href="#">SpeakerBuddie</a>
+        <ul class="nav">
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <!-- Main hero unit for a primary marketing message or call to action -->
+    <div class="hero-unit">
+      <h1 id="slogan">Making good teachers great.</h1>
+      <p id="subtext">SpeakerBuddi is a tool that allows speakers to receive real-time <br/> questions and feedback from the audience.</p>
+      
+      <div id="create_room_container">
+        <%= form_tag rooms_url, :method => :post do %>
+          <%= text_field_tag :"room[name]", nil, :placeholder => "Room name" %>
+          <%= submit_tag "Create Room", :class => "btn primary" %>
+        <% end %>
+      </div>
+    </div>
+
+    <footer>
+      <p>&copy; SpeakerBuddi 2011</p>
+    </footer>
+
+  </div> <!-- /container -->
+</div>

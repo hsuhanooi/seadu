@@ -57,6 +57,22 @@ class Room < ActiveRecord::Base
     }
   end
   
+  def finished?
+    status == 'expired'
+  end
+  
+  def finish_room
+    r = nil
+    if status != 'expired' || ended_at.nil?
+      self.ended_at = Time.now
+      self.status = 'expired'
+      r = self.save
+    else
+      r = true
+    end
+    r
+  end
+  
   def visit(session)
     rooms_visited = session[:rooms]
     if rooms_visited
@@ -72,6 +88,10 @@ class Room < ActiveRecord::Base
       session[:rooms] = id.to_s
     end
     return false
+  end
+  
+  def seconds_alive
+    (Time.now - created_at).round
   end
   
   private

@@ -11,6 +11,7 @@ class RoomsController < ApplicationController
     @room = Room.new(params[:room])
     
     if @room.valid?
+      @room.num_listeners = 1
       @room.save
       redirect_to teachers_view_url(@room.id)
     else
@@ -33,5 +34,29 @@ class RoomsController < ApplicationController
     if mobile?
       render :template => "students/mobile"
     end
-  end  
+  end
+  
+  def poll_listeners
+    room = Room.find(params[:room_id])
+    hash = {}
+    hash[:listeners] = room.num_listeners
+    render :text => hash.to_json
+  end
+  
+  def finish_room
+    room = Room.find(params[:room_id])
+    saved = room.finish_room
+    
+    respond_to do |format|
+      format.html { 
+        if saved
+          flash[:success] = "Room has been closed successfully."
+          redirect_to teachers_view_url(room.id)
+        else
+          flash[:error] = "There was a problem closing your room. Please try again."
+          redirect_to teachers_view_url(room.id)
+        end
+      }
+    end
+  end
 end

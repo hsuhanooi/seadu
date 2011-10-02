@@ -3,7 +3,7 @@
 <div id="vibes">
   <div class="vibe">
     <div class="vibe_container first">
-      <%= link_to create_vibe_url(:room_id => room.id, :vibe_type => :engaged) do %>
+      <%= link_to create_vibe_url(:room_id => room.id, :vibe_type => :good) do %>
         <span class="vibe_button btn">
           <%= image_tag "SB-engaged.png" %>
         </span>
@@ -25,7 +25,7 @@
     
   <div class="vibe">
     <div class="vibe_container">
-      <%= link_to create_vibe_url(:room_id => room.id, :vibe_type => :lost) do %>
+      <%= link_to create_vibe_url(:room_id => room.id, :vibe_type => :confused) do %>
         <span class="vibe_button btn">
           <%= image_tag "SB-lost.png" %>
         <span>

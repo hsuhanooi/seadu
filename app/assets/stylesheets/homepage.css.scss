@@ -1,3 +1,46 @@
 // Place all the styles related to the homepage controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#slogan {
+  margin-top: 40px; 
+  text-align: center; 
+  font-size: 45px; 
+  margin-bottom: 10px;
+}
+#subtext {
+  text-align: center; 
+  color: gray;
+}
+.hero-unit {
+  margin-bottom: 15px !important;
+  margin-top: 80px; 
+  height: 300px;
+}
+footer {
+  border: 0 !important; 
+  text-align: right; 
+  color: white;
+}
+html, body {
+  background-color: #252525 !important;
+}
+#homepage_container {
+  background-image:url('/assets/hero-background.jpg');
+  height: 700px; 
+}
+#create_room_container #room_name {
+  font-size: 16px;
+  line-height: 24px;
+  margin-right: 5px;
+  height: 24px;
+  width: 250px;
+}
+#create_room_container .btn {
+  height: 34px;
+  padding: 10px 12px;
+}
+#create_room_container {
+  margin: 40px auto;
+  width: 375px;
+}
