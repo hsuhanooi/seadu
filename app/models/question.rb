@@ -11,7 +11,8 @@ class Question < ActiveRecord::Base
   scope :from_room, lambda {|room_id| where(room_id: room_id).includes(:votes) }
   scope :after, lambda {|time| where('created_at > ?', Time.parse(time)) }
   scope :most_recent, where("status = 'new'").order("created_at DESC")
-  scope :highest_rated, joins("LEFT OUTER JOIN votes ON questions.id = votes.question_id").where("questions.status = 'new'").order("count(votes.id) DESC").group("questions.id, questions.status, question.room_id, questions.content, questions.created_at, questions.updated_at, votes.*")
+  scope :highest_rated, joins("LEFT OUTER JOIN votes ON questions.id = votes.question_id").where("questions.status = 'new'").order("count(votes.id) DESC").group("questions.id, questions.status, question.room_id, questions.content, questions.created_at, questions.updated_at, votes.vote_type, votes.question_id, votes.created_at, votes.updated_at, votes.id
+")
   
   after_initialize :init
   
