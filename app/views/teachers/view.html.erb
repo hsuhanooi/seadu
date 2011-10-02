@@ -21,7 +21,7 @@
 	  });
 	});
  }
- setInterval("refreshListeners();", 5000);
+ setInterval("refreshListeners();", 10000);
 </script>
 <div id="room" data-id="<%= @room.id %>">
 <div id="teachers_view" class="inner_container">
@@ -31,9 +31,9 @@
     </div>
     <div id="num_listeners">
       <span class="listeners">
-        <%= pluralize(@room.num_listeners, "person") %>
+        <%= @room.num_listeners %>
       </span>
-      in room
+      people in room
     </div>
   </div>
 
@@ -41,4 +41,7 @@
   
   <%= render :partial => "questions/widget" %>
 </div>
-</div>
+
+URL for Teachers: <%= link_to teachers_view_url(:room_id => @room.id) %>
+<br>
+Short URL for Students: <%= link_to short_room_url(:name => @room.name), short_room_url(:name => @room.name) %>

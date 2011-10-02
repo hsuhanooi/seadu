@@ -4,6 +4,25 @@
   <%= stylesheet_link_tag "question" %>
   <%= stylesheet_link_tag "students" %>
 <% end %>
+
+<script type="text/javascript">
+ function refreshListeners()
+ {
+	$.getJSON('<%= poll_listeners_url(@room.id) %>', function(data) {
+      $.each($('span.listeners'), function(index, element) { 
+		var numListeners = parseInt(element.innerHTML);
+		var curListeners = parseInt(data.listeners);
+		element.innerHTML = curListeners;
+		console.log(element)
+		if (numListeners != curListeners) {
+			$(element).effect("highlight", {}, 3000);
+		}
+	  });
+	});
+ }
+ setInterval("refreshListeners();", 10000);
+</script>
+
 <div id="room" data-id="<%= @room.id %>">
   <div id="students_view" class="inner_container">
     <div id="students_header">
@@ -12,9 +31,9 @@
       </div>
       <div id="num_listeners">
         <span class="listeners">
-          <%= pluralize(@room.num_listeners, "person") %>
+          <%= @room.num_listeners %>
         </span>
-        in room
+        people in room
       </div>
     </div>
   

@@ -83,15 +83,18 @@ class Room < ActiveRecord::Base
         end
       }
 
-      if !has_visited
-        self.num_listeners = (num_listeners || 0) + 1
+      if has_visited
         session[:rooms] = rooms_visited + ",#{id}"
-        self.save
+        listeners = (num_listeners || 1) + 1
+        Room.find_by_sql("update rooms set num_listeners = #{listeners}")
         return true
       end
 
     else
       session[:rooms] = id.to_s
+      listeners = (num_listeners || 1) + 1
+      Room.find_by_sql("update rooms set num_listeners = #{listeners} where id = #{id}")
+      return true
     end
     return false
   end

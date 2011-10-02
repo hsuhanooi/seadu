@@ -3,7 +3,7 @@ class Vibe < ActiveRecord::Base
   
   belongs_to :room
   
-  PollInterval = 5
+  PollInterval = 10
   Decay = 120
   VIBE_TYPES = ['bored', 'good', 'confused']
   
