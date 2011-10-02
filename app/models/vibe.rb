@@ -19,7 +19,7 @@ class Vibe < ActiveRecord::Base
   ChartSeriesOrder = ['bored', 'confused', 'good']
   
   def self.chart(room_id)
-    sql = "SELECT count(1) as room_id, vibe_type, created_at FROM `vibes` where room_id = #{room_id} GROUP BY vibe_type, (60/1) * HOUR( created_at ) + FLOOR( MINUTE( created_at ) / 1 )"
+    sql = "SELECT count(1) as room_id, vibe_type, created_at FROM vibes where room_id = #{room_id} GROUP BY vibe_type, (60/1) * HOUR( created_at ) + FLOOR( MINUTE( created_at ) / 1 )"
     Vibe.find_by_sql(sql)
   end
   
