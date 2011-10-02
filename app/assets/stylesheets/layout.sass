@@ -6,6 +6,11 @@
 // @import "compass"
 @import "colors"
 
+=box-shadow
+  -moz-box-shadow: 0 0 10px $dark-gray
+  -webkit-box-shadow: 0 0 10px $dark-gray
+  box-shadow: 0 0 10px $dark-gray
+
 body
   color: gray
   font-family: Helvetica
@@ -21,3 +26,20 @@ ul
     
 ol, ul
   margin: 0 !important
+  
+#global_content
+  background-color: $light-gray
+  margin-top: 40px
+  padding-bottom: 60px
+  
+  .inner_container
+    +box-shadow
+    background-color: white
+    font-size: 14px
+    padding: 0 60px
+    margin: 0 auto
+    width: 680px
+
+    input, textarea
+      font-size: 14px
+
