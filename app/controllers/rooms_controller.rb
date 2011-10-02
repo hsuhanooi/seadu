@@ -24,9 +24,10 @@ class RoomsController < ApplicationController
 
   def show
     @room = Room.find(params[:id])
-    @questions = @room.questions.highest_rated
-    @mr_questions = @room.questions.most_recent
+    # @questions = @room.questions.highest_rated
+    @questions = @room.questions.most_recent.page(params[:page])
     @question = Question.new(room: @room)
+    @page = params[:page]
     
     if mobile?
       render :template => "rooms/mobile"

@@ -1,4 +1,5 @@
-<div id="questions">
+<div id="questions" data-page="<%= @page %>">
+  <%= paginate(@questions)%>
   <ul id="question_list">
   <% questions.each do |question| %>
     <%= render question %>
