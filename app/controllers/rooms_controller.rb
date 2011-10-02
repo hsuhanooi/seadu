@@ -64,7 +64,7 @@ class RoomsController < ApplicationController
         if saved
           # flash[:success] = "Room has been closed successfully."
           # redirect_to teachers_view_url(room.id)
-          redirect_to finished_rooms_url
+          redirect_to rooms_url(room.id)
         else
           flash[:error] = "There was a problem closing your room. Please try again."
           redirect_to teachers_view_url(room.id)

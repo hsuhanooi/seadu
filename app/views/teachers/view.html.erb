@@ -1,47 +1,60 @@
 <%= content_for(:head) do %>
-  <%= javascript_include_tag 'highcharts' %>
-  
-  <%= stylesheet_link_tag "question" %>
-  <%= stylesheet_link_tag "teachers" %>
+<%= javascript_include_tag 'highcharts' %>
+
+<%= stylesheet_link_tag "question" %>
+<%= stylesheet_link_tag "teachers" %>
 <% end %>
 
 
 <script type="text/javascript">
- function refreshListeners()
- {
-	$.getJSON('<%= poll_listeners_url(@room.id) %>', function(data) {
-      $.each($('span.listeners'), function(index, element) { 
-		var numListeners = parseInt(element.innerHTML);
-		var curListeners = parseInt(data.listeners);
-		element.innerHTML = curListeners;
-		// console.log(element)
-		if (numListeners != curListeners) {
-			$(element).effect("highlight", {}, 3000);
-		}
-	  });
-	});
- }
- setInterval("refreshListeners();", 10000);
+function refreshListeners()
+{
+  $.getJSON('<%= poll_listeners_url(@room.id) %>', function(data) {
+    $.each($('span.listeners'), function(index, element) { 
+      var numListeners = parseInt(element.innerHTML);
+      var curListeners = parseInt(data.listeners);
+      element.innerHTML = curListeners;
+      // console.log(element)
+      if (numListeners != curListeners) {
+        $(element).effect("highlight", {}, 3000);
+      }
+    });
+  });
+}
+setInterval("refreshListeners();", 10000);
 </script>
 <div id="room" data-id="<%= @room.id %>">
-<div id="teachers_view" class="inner_container">
-  <div id="teachers_header">
-    <div id="room_name">
-      <%= @room.name %>
+
+  <div id="teachers_view" class="inner_container">
+    <div id="teachers_header">
+      <div id="room_name">
+        <div id="name_field">
+          <%= @room.name %>
+        </div>
+        <span id="teachers_url">
+          Teachers url:
+          <%= link_to teachers_view_url(:room_id => @room.id) %>
+        </span>
+        <span id="students_url">
+          Students url:
+          <%= link_to short_room_url(:name => @room.name), short_room_url(:name => @room.name) %>
+        </span>
+      </div>
+
+      <% if !@room.finished? %>
+        <%= link_to "Done", finish_room_url(@room.id), :id => "finish_button", :class => "btn primary" %>
+      <% end %>
+
+      <div id="num_listeners">
+        <span class="listeners">
+          <%= @room.num_listeners %>
+        </span>
+        people in room
+      </div>
     </div>
-    <div id="num_listeners">
-      <span class="listeners">
-        <%= @room.num_listeners %>
-      </span>
-      people in room
-    </div>
+
+    <%= render_vibe_chart(@room) %>
+
+    <%= render :partial => "questions/widget" %>
   </div>
-
-  <%= render_vibe_chart(@room) %>
-  
-  <%= render :partial => "questions/widget" %>
 </div>
-
-URL for Teachers: <%= link_to teachers_view_url(:room_id => @room.id) %>
-<br>
-Short URL for Students: <%= link_to short_room_url(:name => @room.name), short_room_url(:name => @room.name) %>
