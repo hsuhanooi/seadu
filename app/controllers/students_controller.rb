@@ -5,7 +5,7 @@ class StudentsController < ApplicationController
     #Mark the user as visited the room
     @room.visit(session)
     
-    @questions = @room.questions.highest_rated
+    @questions = @room.questions.highest_rated.page(params[:page])
     @question = Question.new(room: @room)
     if mobile?
       render :template => "students/mobile"
