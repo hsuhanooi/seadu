@@ -10,4 +10,10 @@ class TeacherSessionsController < ApplicationController
       redirect_to new_teacher_sessions_url
     end
   end
+  
+  def destroy
+    session.delete(:teacher_id)
+    flash[:notice] = "Logout successful"
+    redirect_to root_url
+  end
 end
