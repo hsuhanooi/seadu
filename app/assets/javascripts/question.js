@@ -5,7 +5,7 @@ $(function () {
 });
 
 function updateQuestions() {
-  var room_id = $('#room').attr('data-id')
+  var room_id = $('#room').attr('data-id');
   var page = $('#questions').attr('data-page');
   var sorting = $('#questions').attr('data-sort');
   var teacher = $('#teachers_view').length > 0;
