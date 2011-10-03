@@ -12,7 +12,7 @@ class Question < ActiveRecord::Base
   scope :after, lambda {|time| where('created_at > ?', Time.parse(time)) }
   scope :most_recent, where("status = 'new'").order("created_at DESC")
   # scope :highest_rated, joins("LEFT OUTER JOIN votes ON questions.id = votes.question_id").where("questions.status = 'new'").order("count(votes.id) DESC").group("questions.id")
-  scope :highest_rated, includes(:votes).where("questions.status = 'new'").order("count(votes.id) DESC").group("questions.id")
+  scope :highest_rated, where("questions.status = 'new'").order("votes_count DESC")
   
   after_initialize :init
   

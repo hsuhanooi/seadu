@@ -1,5 +1,5 @@
 class Vote < ActiveRecord::Base
-  belongs_to :question
+  belongs_to :question, :counter_cache => true
   
   scope :up, where(vote_type: 'up')
   
